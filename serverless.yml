@@ -1,0 +1,48 @@
+frameworkVersion: ">=1.28.0"
+
+# NOTE: update this with your service name
+service: email-dispatcher
+
+# Use the serverless-webpack plugin to transpile ES6
+plugins:
+  - serverless-webpack
+  - serverless-offline
+
+# serverless-webpack configuration
+# Enable auto-packing of external modules
+custom:
+  webpack:
+    webpackConfig: ./webpack.config.js
+    includeModules: true
+  serverless-offline:
+    babelOptions:
+      presets: ["env", "flow"]
+
+provider:
+  name: aws
+  profile: ${opt:profile, 'spreadshare'}
+  runtime: nodejs8.10
+  stage: ${opt:stage, 'dev'}
+  region: ${opt:region, 'eu-central-1'}
+  apiKeys:
+    - ${self:provider.stage}-email-dispatcher-apikey
+  memorySize: 512
+  versionFunctions: false
+  environment: ${file(env.yml):${self:provider.stage}}
+
+functions:
+  test:
+    handler: src/handlers/test.handler
+    events:
+      - http:
+          method: post
+          path: email/test
+  subscriptionDigest:
+    handler: src/handlers/subscriptionDigest.handler
+    events:
+      - http:
+          method: post
+          path: email/subscriptionDigest
+
+package:
+  individually: true
