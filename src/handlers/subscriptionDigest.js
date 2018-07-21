@@ -9,12 +9,13 @@ import { subscriptionDigestSchema } from '../schemas';
 import type { SubscriptionDigestEvent } from '../types';
 
 export const subscriptionDigest = async (event: SubscriptionDigestEvent) => {
-  const [err, result] = await to(mailer.sendSubscriptionDigest(event.body));
-  if (err) {
-    console.log('got an error: ', err);
-    return { statusCode: 500, err: err.message };
-  }
-  console.log('body: ', result);
+  mailer.sendSubscriptionDigest(event.body);
+  // const [err, result] = await to(mailer.sendSubscriptionDigest(event.body));
+  // if (err) {
+  //   console.log('got an error: ', err);
+  //   return { statusCode: 500, err: err.message };
+  // }
+  // console.log('email client response: ', result);
   return {
     statusCode: 200,
     result: JSON.stringify({

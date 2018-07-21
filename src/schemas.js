@@ -8,6 +8,61 @@ export const testEmailSchema = {
         email: {
           type: 'string',
           format: 'email'
+        },
+        greeting: {
+          type: 'string'
+        }
+      }
+    }
+  }
+};
+
+export const userProfileSchema = {
+  type: 'object',
+  properties: {
+    body: {
+      type: 'object',
+      required: ['emails', 'friend'],
+      properties: {
+        emails: {
+          anyOf: [
+            {
+              type: 'array',
+              items: {
+                type: 'string',
+                format: 'email'
+              },
+              uniqueItems: true,
+              minItems: 1
+            },
+            {
+              type: 'string',
+              format: 'email'
+            }
+          ]
+        },
+        friend: {
+          type: 'object',
+          required: ['name', 'fullName', 'tagLine', 'imageLink', 'followLink'],
+          properties: {
+            name: {
+              type: 'string'
+            },
+            fullName: {
+              type: 'string'
+            },
+            tagLine: {
+              type: 'string'
+            },
+            imageLink: {
+              type: 'string',
+              format: 'url'
+            },
+            followLink: {
+              type: 'string',
+              format: 'url'
+            }
+          }
         }
       }
     }

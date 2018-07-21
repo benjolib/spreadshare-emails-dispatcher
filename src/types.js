@@ -1,15 +1,27 @@
 // @flow
 
 export interface MailerI {
-  sendTestMail(email: string): Promise<void>;
-  sendSubscriptionDigest(update: SubscriptionDigest): Promise<void>;
-}
-
-export interface NodeMailerI {
   sendMail(content: EmailContent): Promise<void>;
 }
 
-type EmailContent = {
+export interface SpreadshareMailerI {
+  sendTestMail(email: string, greeting: string): Promise<void>;
+  sendFriendJoinedEmail(
+    email: string | Array<string>,
+    friendInfo: UserProfile
+  ): Promise<void>;
+  sendSubscriptionDigest(update: SubscriptionDigest): Promise<void>;
+}
+
+export type UserProfile = {
+  name: string,
+  fullName: string,
+  tagLine: string,
+  followLink: string,
+  imageLink: string
+};
+
+export type EmailContent = {
   from: string,
   to: Array<string> | string,
   subject: string,
@@ -44,7 +56,15 @@ export type SubscriptionDigest = {
 // http types
 export type TestEmailEvent = {
   body: {
-    email: string
+    email: string,
+    greeting?: string
+  }
+};
+
+export type FriendJoinedEmailEvent = {
+  body: {
+    email: Array<string> | string,
+    friend: UserProfile
   }
 };
 

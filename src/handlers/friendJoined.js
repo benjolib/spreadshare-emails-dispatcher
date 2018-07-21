@@ -4,13 +4,13 @@ import to from 'await-to-js';
 import middy from 'middy';
 import { jsonBodyParser, validator } from 'middy/middlewares';
 import { mailer } from './factory';
-import { testEmailSchema } from '../schemas';
+import { userProfileSchema } from '../schemas';
 import httpJsonErrorHandler from '../middlewares/httpJsonErrorHandler';
-import type { TestEmailEvent } from '../types';
+import type { FriendJoinedEmailEvent } from '../types';
 
-export const testEmail = async (event: TestEmailEvent) => {
-  const { email, greeting } = event.body;
-  const [err, result] = await to(mailer.sendTestMail(email, greeting || 'Hi'));
+export const friendJoined = async (event: FriendJoinedEmailEvent) => {
+  const { emails, friend } = event.body;
+  const [err, result] = await to(mailer.sendFriendJoinedEmail(emails, friend));
   if (err) {
     console.log('got an error: ', err);
     return { statusCode: 500, err: err.message };
@@ -24,7 +24,7 @@ export const testEmail = async (event: TestEmailEvent) => {
   };
 };
 
-export const handler = middy(testEmail)
+export const handler = middy(friendJoined)
   .use(jsonBodyParser())
-  .use(validator({ inputSchema: testEmailSchema }))
+  .use(validator({ inputSchema: userProfileSchema }))
   .use(httpJsonErrorHandler());

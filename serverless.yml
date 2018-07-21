@@ -37,6 +37,12 @@ functions:
       - http:
           method: post
           path: email/test
+  friendJoined:
+    handler: src/handlers/friendJoined.handler
+    events:
+      - http:
+          method: post
+          path: email/friendJoined
   subscriptionDigest:
     handler: src/handlers/subscriptionDigest.handler
     events:

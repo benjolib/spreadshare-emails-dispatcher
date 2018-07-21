@@ -1,6 +1,7 @@
 // @flow
 
-import MailgunMailer from '../mailgunMailer';
+import SpreadshareMailer from '../mailer/spreadshareMailer';
+import MailgunMailer from '../mailer/mailgunMailer';
 
 const apiKey = process.env.MAILGUN_API_KEY || '';
 const domain = process.env.MAILGUN_DOMAIN || '';
@@ -12,4 +13,5 @@ const mailgunOptions = {
   from
 };
 
-export const mailer = new MailgunMailer(mailgunOptions);
+const mailClient = new MailgunMailer(mailgunOptions);
+export const mailer = new SpreadshareMailer(mailClient);
