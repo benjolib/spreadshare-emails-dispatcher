@@ -100,6 +100,41 @@ Example:
 
 -----------
 
+### Friend Joined Email
+`POST /email/friend-joined`
+
+#### Request Body:
+
+Fields:
+* emails - Array of emails or a single email, `required`
+* commentInfo - `required`
+    * personName - `required`
+    * personFullName - `required`
+    * personImageLink - `required`, `a valid url`
+    * streamName - `required`
+    * replyLink - `required`, `a valid url`
+    * comment - `required`
+
+Example:
+```
+{
+	"emails": "shashank004@gmail.com",
+	"commentInfo": {
+		"personName": "Ben",
+		"personFullName": "Benjamin Libor",
+		"streamName": "Design Tools",
+		"personImageLink": "https://ca.slack-edge.com/T7S34FEUD-U7RUFNSD8-223ce264a05a-72",
+		"replyLink": "https://google.com",
+		"comment": "Lorem ipsum dolor sit amet, possim aperiam admodum te vix, et qui natum iudico iisque. Suscipit consequuntur at mel, has sale dicat vulputate at, te sed idque inani nonumes. Oratio perpetua no eos, sea ut graece laoreet adipisci, vim molestie corrumpit adversarium ad. Sed vero mutat et, id usu tibique insolens repudiare. Stet lorem nominavi et sit. Qui no ubique dignissim vituperatoribus, cibo dolore graeco in duo"
+	}
+}
+```
+
+#### Response Codes:
+200
+
+-----------
+
 ### Error format for all api's
 Error format for all enpoints is based on [jsonApi](http://jsonapi.org/examples/#error-objects-basics) standard with `status` and `detail` field always present.
 Example:

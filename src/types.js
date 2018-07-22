@@ -6,12 +6,31 @@ export interface MailerI {
 
 export interface SpreadshareMailerI {
   sendTestMail(email: string, greeting: string): Promise<void>;
+
   sendFriendJoinedEmail(
     email: string | Array<string>,
     friendInfo: UserProfile
   ): Promise<void>;
-  sendSubscriptionDigest(update: SubscriptionDigest): Promise<void>;
+
+  sendCommentEmail(
+    email: string | Array<string>,
+    commentInfo: CommentInfo
+  ): Promise<void>;
+
+  sendSubscriptionDigest(
+    email: string | Array<string>,
+    digest: SubscriptionDigest
+  ): Promise<void>;
 }
+
+export type CommentInfo = {
+  personName: string,
+  personFullName: string,
+  personImageLink: string,
+  streamName: string,
+  replyLink: string,
+  comment: string
+};
 
 export type UserProfile = {
   name: string,
@@ -37,7 +56,8 @@ export type MailgunOptions = {
 type Frequency = 'daily' | 'weekly' | 'monthly';
 
 type Post = {
-  title: string,
+  addedBy: string,
+  fields: string,
   description: string
 };
 
@@ -48,7 +68,6 @@ type Publication = {
 };
 
 export type SubscriptionDigest = {
-  emails: Array<string>,
   frequency: Frequency,
   publication: Publication
 };
@@ -69,5 +88,15 @@ export type FriendJoinedEmailEvent = {
 };
 
 export type SubscriptionDigestEvent = {
-  body: SubscriptionDigest
+  body: {
+    emails: Array<string> | string,
+    digest: SubscriptionDigest
+  }
+};
+
+export type CommentEmailEvent = {
+  body: {
+    emails: Array<string> | string,
+    commentInfo: CommentInfo
+  }
 };

@@ -69,6 +69,68 @@ export const userProfileSchema = {
   }
 };
 
+export const commentSchema = {
+  type: 'object',
+  properties: {
+    body: {
+      type: 'object',
+      required: ['emails', 'commentInfo'],
+      properties: {
+        emails: {
+          anyOf: [
+            {
+              type: 'array',
+              items: {
+                type: 'string',
+                format: 'email'
+              },
+              uniqueItems: true,
+              minItems: 1
+            },
+            {
+              type: 'string',
+              format: 'email'
+            }
+          ]
+        },
+        commentInfo: {
+          type: 'object',
+          required: [
+            'personName',
+            'personFullName',
+            'personImageLink',
+            'streamName',
+            'replyLink',
+            'comment'
+          ],
+          properties: {
+            personName: {
+              type: 'string'
+            },
+            personFullName: {
+              type: 'string'
+            },
+            personImageLink: {
+              type: 'string',
+              format: 'url'
+            },
+            streamName: {
+              type: 'string'
+            },
+            replyLink: {
+              type: 'string',
+              format: 'url'
+            },
+            comment: {
+              type: 'string'
+            }
+          }
+        }
+      }
+    }
+  }
+};
+
 export const subscriptionDigestSchema = {
   type: 'object',
   properties: {
@@ -77,13 +139,21 @@ export const subscriptionDigestSchema = {
       required: ['emails', 'frequency', 'publication'],
       properties: {
         emails: {
-          type: 'array',
-          items: {
-            type: 'string',
-            format: 'email'
-          },
-          uniqueItems: true,
-          minItems: 1
+          anyOf: [
+            {
+              type: 'array',
+              items: {
+                type: 'string',
+                format: 'email'
+              },
+              uniqueItems: true,
+              minItems: 1
+            },
+            {
+              type: 'string',
+              format: 'email'
+            }
+          ]
         },
         frequency: {
           type: 'string',

@@ -9,7 +9,8 @@ import type {
   SpreadshareMailerI,
   MailerI,
   SubscriptionDigest,
-  UserProfile
+  UserProfile,
+  CommentInfo
 } from '../types';
 
 export default class SpreadshareMailer implements SpreadshareMailerI {
@@ -42,12 +43,27 @@ export default class SpreadshareMailer implements SpreadshareMailerI {
     return this.mailer.sendMail(content);
   }
 
-  sendSubscriptionDigest(update: SubscriptionDigest): Promise<void> {
+  async sendCommentEmail(
+    email: string | Array<string>,
+    commentInfo: CommentInfo
+  ): Promise<void> {
+    const envelope = envelopes.Comment(email, commentInfo);
     const content = {
-      from: this.from,
-      to: update.emails,
-      subject: 'Yet to be decided!',
-      html: JSON.stringify(update.publication)
+      ...envelope,
+      html: await getLetter('Comment', commentInfo)
+    };
+
+    return this.mailer.sendMail(content);
+  }
+
+  async sendSubscriptionDigest(
+    email: string | Array<string>,
+    digest: SubscriptionDigest
+  ): Promise<void> {
+    const envelope = envelopes.SubscriptionDigest(email, digest);
+    const content = {
+      ...envelope,
+      html: await getLetter('SubscriptionDigest', { digest })
     };
 
     return this.mailer.sendMail(content);

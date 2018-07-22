@@ -48,12 +48,20 @@ functions:
           path: email/friend-joined
           cors: true
           private: true
+  newComment:
+    handler: src/handlers/comment.handler
+    events:
+      - http:
+          method: post
+          path: email/new-comment
+          cors: true
+          private: true
   subscriptionDigest:
     handler: src/handlers/subscriptionDigest.handler
     events:
       - http:
           method: post
-          path: email/subscriptionDigest
+          path: email/subscription-digest
           cors: true
           private: true
 

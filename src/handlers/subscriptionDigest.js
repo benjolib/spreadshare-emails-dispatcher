@@ -9,7 +9,8 @@ import { subscriptionDigestSchema } from '../schemas';
 import type { SubscriptionDigestEvent } from '../types';
 
 export const subscriptionDigest = async (event: SubscriptionDigestEvent) => {
-  const [err, result] = await to(mailer.sendSubscriptionDigest(event.body));
+  const { emails, digest } = event.body;
+  const [err, result] = await to(mailer.sendSubscriptionDigest(emails, digest));
   if (err) {
     console.log('got an error: ', err);
     return { statusCode: 500, err: err.message };
