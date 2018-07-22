@@ -1,0 +1,71 @@
+{
+	"info": {
+		"_postman_id": "3bbfe3aa-c275-4ac4-b24e-ba9172e1365c",
+		"name": "spreadshare-email-dispatcher",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Test Email",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "x-api-key",
+						"value": "d41d8cd98f00b204e9800998ecf8427e"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"email\": \"shashank004@gmail.com\"\n}"
+				},
+				"url": {
+					"raw": "{{spreadshare-emails}}/email/test",
+					"host": [
+						"{{spreadshare-emails}}"
+					],
+					"path": [
+						"email",
+						"test"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Friend Joined",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "x-api-key",
+						"value": "d41d8cd98f00b204e9800998ecf8427e"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"emails\": \"shashank004@gmail.com\",\n\t\"friend\": {\n\t\t\"name\": \"Ben\",\n\t\t\"fullName\": \"Benjamin Libor\",\n\t\t\"tagLine\": \"Spreadshare founder\",\n\t\t\"imageLink\": \"https://ca.slack-edge.com/T7S34FEUD-U7RUFNSD8-223ce264a05a-72\",\n\t\t\"followLink\": \"https://google.com\"\n\t}\n}"
+				},
+				"url": {
+					"raw": "{{spreadshare-emails}}/email/friend-joined",
+					"host": [
+						"{{spreadshare-emails}}"
+					],
+					"path": [
+						"email",
+						"friend-joined"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

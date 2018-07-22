@@ -63,7 +63,7 @@ export type TestEmailEvent = {
 
 export type FriendJoinedEmailEvent = {
   body: {
-    email: Array<string> | string,
+    emails: Array<string> | string,
     friend: UserProfile
   }
 };

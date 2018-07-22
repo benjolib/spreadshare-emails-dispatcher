@@ -7,15 +7,16 @@ import { mailer } from './factory';
 import { userProfileSchema } from '../schemas';
 import httpJsonErrorHandler from '../middlewares/httpJsonErrorHandler';
 import type { FriendJoinedEmailEvent } from '../types';
+import { errorRes } from '../utils/http';
 
 export const friendJoined = async (event: FriendJoinedEmailEvent) => {
   const { emails, friend } = event.body;
   const [err, result] = await to(mailer.sendFriendJoinedEmail(emails, friend));
   if (err) {
-    console.log('got an error: ', err);
-    return { statusCode: 500, err: err.message };
+    console.log('error: ', err);
+    return errorRes(500, err.message);
   }
-  console.log('body: ', result);
+  console.log('mailGunRes: ', result);
   return {
     statusCode: 200,
     result: JSON.stringify({

@@ -37,18 +37,24 @@ functions:
       - http:
           method: post
           path: email/test
+          cors: true
+          private: true
   friendJoined:
     handler: src/handlers/friendJoined.handler
     events:
       - http:
           method: post
-          path: email/friendJoined
+          path: email/friend-joined
+          cors: true
+          private: true
   subscriptionDigest:
     handler: src/handlers/subscriptionDigest.handler
     events:
       - http:
           method: post
           path: email/subscriptionDigest
+          cors: true
+          private: true
 
 package:
   individually: true

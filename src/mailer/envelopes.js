@@ -1,7 +1,7 @@
 // @flow
 import type { EnvelopeFactory } from './types';
 
-const defaultFromAddress = 'subscriptions@spreadshare.co';
+const defaultFromAddress = process.env.FROM_EMAIL || 'emails@spreadshare.co';
 
 const envelopes: { [string]: EnvelopeFactory } = {
   TestEmail: (to, _, from) => ({
