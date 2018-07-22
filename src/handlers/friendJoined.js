@@ -19,7 +19,7 @@ export const friendJoined = async (event: FriendJoinedEmailEvent) => {
   console.log('mailGunRes: ', result);
   return {
     statusCode: 200,
-    result: JSON.stringify({
+    body: JSON.stringify({
       status: 'Success'
     })
   };

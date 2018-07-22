@@ -17,7 +17,7 @@ export const subscriptionDigest = async (event: SubscriptionDigestEvent) => {
   console.log('email client response: ', result);
   return {
     statusCode: 200,
-    result: JSON.stringify({
+    body: JSON.stringify({
       status: 'Success'
     })
   };

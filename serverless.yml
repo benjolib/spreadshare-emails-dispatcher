@@ -27,6 +27,7 @@ provider:
   apiKeys:
     - ${self:provider.stage}-email-dispatcher-apikey
   memorySize: 512
+  timeout: 30
   versionFunctions: false
   environment: ${file(env.yml):${self:provider.stage}}
 

@@ -19,7 +19,7 @@ export const testEmail = async (event: TestEmailEvent) => {
   console.log('mailGunRes: ', result);
   return {
     statusCode: 200,
-    result: JSON.stringify({
+    body: JSON.stringify({
       status: 'Success'
     })
   };
