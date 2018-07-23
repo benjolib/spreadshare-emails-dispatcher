@@ -28,7 +28,7 @@ See the scripts section in package.json
 * [ ] new follower email api
 * [ ] new collaboration email api
 * [ ] pending collaborations email api
-* [ ] new comment email api
+* [x] new comment email api
 * [ ] new subscriber email api
 * [ ] curator informed email api
 * [ ] post reviewed email api
