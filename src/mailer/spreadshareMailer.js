@@ -5,6 +5,7 @@ import util from 'util';
 import path from 'path';
 import handlebars from 'handlebars';
 import envelopes from './envelopes';
+import letter from './letter';
 import type {
   SpreadshareMailerI,
   MailerI,
@@ -24,9 +25,9 @@ export default class SpreadshareMailer implements SpreadshareMailerI {
     const envelope = envelopes.TestEmail(email);
     const content = {
       ...envelope,
-      html: await getLetter('TestEmail', { greeting })
+      // html: await getLetter('TestEmail', { greeting })
+      html: letter('update', { name: 'Shashank', body: 'Mjml test email' })
     };
-
     return this.mailer.sendMail(content);
   }
 
