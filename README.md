@@ -51,6 +51,7 @@ Following is the list of spreadshare email dispatcher api. All api's need to pas
 #### Request Body:
 
 Fields:
+
 * email - `required`
 * greeting - `optional`
 
@@ -73,6 +74,7 @@ Example:
 #### Request Body:
 
 Fields:
+
 * emails - Array of emails or a single email, `required`
 * friend - `required`
     * name - `required`
@@ -106,6 +108,7 @@ Example:
 #### Request Body:
 
 Fields:
+
 * emails - Array of emails or a single email, `required`
 * commentInfo - `required`
     * personName - `required`
