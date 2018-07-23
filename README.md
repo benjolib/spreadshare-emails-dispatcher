@@ -42,7 +42,7 @@ See the scripts section in package.json
 --------------------------------------
 
 ## API
-Following is the list of spreadshare email dispatcher api
+Following is the list of spreadshare email dispatcher api. All api's need to pass the api key in `x-api-key` header
 
 
 ### Test Email
@@ -100,8 +100,8 @@ Example:
 
 -----------
 
-### Friend Joined Email
-`POST /email/friend-joined`
+### New Comment Email
+`POST /email/new-comment`
 
 #### Request Body:
 
