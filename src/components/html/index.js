@@ -1,3 +1,5 @@
+import update from './Update';
+
 module.exports = {
-  update: require('./Update')
+  update
 };

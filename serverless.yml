@@ -32,8 +32,18 @@ provider:
   environment: ${file(env.yml):${self:provider.stage}}
 
 functions:
+  renderHtml:
+    handler: src/handlers/render.handler
+    description: Render html given data
+    events:
+      - http:
+          method: get
+          path: render/{type}
+          cors: true
+    package: false
   test:
     handler: src/handlers/test.handler
+    description: Send a test email
     events:
       - http:
           method: post
@@ -42,6 +52,7 @@ functions:
           private: true
   friendJoined:
     handler: src/handlers/friendJoined.handler
+    description: Send a Friend Joined email
     events:
       - http:
           method: post
@@ -50,6 +61,7 @@ functions:
           private: true
   newComment:
     handler: src/handlers/comment.handler
+    description: Send a New Comment email
     events:
       - http:
           method: post
@@ -58,12 +70,13 @@ functions:
           private: true
   subscriptionDigest:
     handler: src/handlers/subscriptionDigest.handler
-    events:
-      - http:
-          method: post
-          path: email/subscription-digest
-          cors: true
-          private: true
+    description: Send a Subscriptions Digest email
+    # events:
+    #   - http:
+    #       method: post
+    #       path: email/subscription-digest
+    #       cors: true
+    #       private: true
 
 package:
   individually: true

@@ -10,7 +10,7 @@ const renderReact = (component, data) => {
   return ReactDOMServer.renderToStaticMarkup(rootElemComponent);
 };
 
-const renderHtml = (type, data) => {
+const renderHtml = (type, data): string => {
   const component = components[type];
   const mjmlDom = renderReact(component, data);
   return mjml2html(mjmlDom).html;

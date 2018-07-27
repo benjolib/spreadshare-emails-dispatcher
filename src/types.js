@@ -80,6 +80,12 @@ export type TestEmailEvent = {
   }
 };
 
+export type RenderHtmlEvent = {
+  pathParameters: {
+    type: string
+  }
+};
+
 export type FriendJoinedEmailEvent = {
   body: {
     emails: Array<string> | string,
@@ -87,7 +93,12 @@ export type FriendJoinedEmailEvent = {
   }
 };
 
+export type Context = {
+  requestId: string
+};
+
 export type SubscriptionDigestEvent = {
+  context: Context,
   body: {
     emails: Array<string> | string,
     digest: SubscriptionDigest
