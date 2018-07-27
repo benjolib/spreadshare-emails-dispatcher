@@ -21,12 +21,11 @@ export default class SpreadshareMailer implements SpreadshareMailerI {
     this.mailer = mailer;
   }
 
-  async sendTestMail(email: string, greeting: string): Promise<void> {
+  sendTestMail(email: string, greeting: string): Promise<void> {
     const envelope = envelopes.TestEmail(email);
     const content = {
       ...envelope,
-      // html: await getLetter('TestEmail', { greeting })
-      html: letter('update', { name: 'Shashank', body: 'Mjml test email' })
+      html: letter('test', { title: 'Test Email', greeting })
     };
     return this.mailer.sendMail(content);
   }

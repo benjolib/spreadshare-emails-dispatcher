@@ -3,7 +3,7 @@
 import mjml2html from 'mjml';
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
-import components from '../components/html';
+import components from '../components';
 
 const renderReact = (component, data) => {
   const rootElemComponent = React.createElement(component, data);

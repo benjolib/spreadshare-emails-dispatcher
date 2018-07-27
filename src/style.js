@@ -1,26 +1,55 @@
 module.exports = {
-  header: {
-    fontSize: '20px'
-  },
+  fontFamily: 'Lato',
 
-  distance: '12', // px
+  logoWidth: '48px',
 
-  footer: {
-    socialIcon: {
-      size: '16px'
-    }
-  },
-
-  width: {
-    half: '50%',
-    full: '100%'
+  padding: {
+    top: '64px',
+    bottom: '64px'
   },
 
   colors: {
-    white: '#FFFFFF',
-    primary: '#2e7d32',
-    secondary: '#42a5f5',
-    tertiary: '#f5f5f5',
-    black: '#080808'
+    background: '#F4F4F4',
+    footer: '#F8F8FB',
+    contentBackground: '#ffffff',
+    titleText: '#2a1e3e',
+    subTitleText: '#9baabf'
+  },
+
+  textSizes: {
+    title: '40px',
+    subTitle: '24px'
+  },
+
+  fonts: {
+    default:
+      '"Lato", "Lucida Grande", "Lucida Sans Unicode", Tahoma, Sans-Serif'
+  },
+
+  fontWeights: {
+    title: 'bold',
+    subTitle: '200'
+  },
+
+  lineHeights: {
+    title: '40px',
+    subTitle: '24px'
+  },
+
+  a: {
+    color: '#2DaD6B',
+    fontFamily:
+      '"Roboto", "Lucida Grande", "Lucida Sans Unicode", Tahoma, Sans-Serif',
+    fontWeight: 'normal',
+    textAlign: 'left',
+    lineHeight: 1.3,
+    textDecoration: 'none'
+  },
+
+  contentBody: {},
+
+  subTitleText: {
+    color: '#9baabf',
+    letterSpacing: '-0.5px'
   }
 };

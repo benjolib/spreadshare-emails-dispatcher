@@ -4,7 +4,10 @@ import letter from '../mailer/letter';
 import type { RenderHtmlEvent } from '../types';
 
 const data = {
-  update: { name: 'Shashank', body: 'Mjml test email' }
+  test: {
+    title: 'Test Email',
+    greeting: 'Hola!'
+  }
 };
 
 export const handler = async (event: RenderHtmlEvent) => {
