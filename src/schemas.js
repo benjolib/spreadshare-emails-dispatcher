@@ -95,27 +95,36 @@ export const commentSchema = {
         },
         commentInfo: {
           type: 'object',
-          required: [
-            'personName',
-            'personFullName',
-            'personImageLink',
-            'streamName',
-            'replyLink',
-            'comment'
-          ],
+          required: ['person', 'streamName', 'replyLink', 'comment'],
           properties: {
-            personName: {
-              type: 'string'
+            person: {
+              type: 'object',
+              required: ['name', 'fullName', 'imageLink'],
+              properties: {
+                name: {
+                  type: 'string'
+                },
+                fullName: {
+                  type: 'string'
+                },
+                imageLink: {
+                  type: 'string',
+                  format: 'url'
+                }
+              }
             },
-            personFullName: {
-              type: 'string'
-            },
-            personImageLink: {
-              type: 'string',
-              format: 'url'
-            },
-            streamName: {
-              type: 'string'
+            stream: {
+              type: 'object',
+              required: ['name', 'link'],
+              properties: {
+                name: {
+                  type: 'string'
+                },
+                link: {
+                  type: 'string',
+                  format: 'url'
+                }
+              }
             },
             replyLink: {
               type: 'string',

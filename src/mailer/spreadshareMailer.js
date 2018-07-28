@@ -25,7 +25,7 @@ export default class SpreadshareMailer implements SpreadshareMailerI {
     const envelope = envelopes.TestEmail(email);
     const content = {
       ...envelope,
-      html: letter('test', { title: 'Test Email', greeting })
+      html: letter('test', { greeting })
     };
     return this.mailer.sendMail(content);
   }
@@ -43,14 +43,14 @@ export default class SpreadshareMailer implements SpreadshareMailerI {
     return this.mailer.sendMail(content);
   }
 
-  async sendCommentEmail(
+  sendCommentEmail(
     email: string | Array<string>,
     commentInfo: CommentInfo
   ): Promise<void> {
     const envelope = envelopes.Comment(email, commentInfo);
     const content = {
       ...envelope,
-      html: await getLetter('Comment', commentInfo)
+      html: letter('newComment', commentInfo)
     };
 
     return this.mailer.sendMail(content);

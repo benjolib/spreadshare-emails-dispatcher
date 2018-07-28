@@ -1,13 +1,9 @@
 import React from 'react';
-import style from '../style';
+import style from '../../style';
 
 function Footer() {
   return (
-    <mj-section
-      background-color={style.colors.footer}
-      padding-top={style.padding.top}
-      padding-bottom={style.padding.bottom}
-    >
+    <mj-section background-color={style.colors.footer}>
       <mj-column>
         <mj-image
           width={style.logoWidth}
@@ -19,17 +15,11 @@ function Footer() {
           align="center"
           font-size="28px"
           font-weight="bold"
-          font-family="lato"
           color="#2a1e3e"
         >
           Follow your Stream
         </mj-text>
-        <mj-text
-          align="center"
-          font-weight="300"
-          font-family="lato"
-          color="#9baabf"
-        >
+        <mj-text align="center" font-weight="300" color="#9baabf">
           Spreadshare Inc.
         </mj-text>
         <mj-spacer height="24px" />

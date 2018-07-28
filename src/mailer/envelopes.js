@@ -24,7 +24,7 @@ const envelopes: { [string]: EnvelopeFactory } = {
     from: `"Spreadshare" <${from || defaultFromAddress}>`,
     to,
     // $FlowIgnore
-    subject: `${content.personName} added a comment to ${content.streamName}`
+    subject: `${content.person.name} added a comment to ${content.streamName}`
   }),
   SubscriptionDigest: (to, content, from) => ({
     from: `"Spreadshare" <${from || defaultFromAddress}>`,

@@ -23,11 +23,20 @@ export interface SpreadshareMailerI {
   ): Promise<void>;
 }
 
+export type Person = {
+  name: string,
+  fullName: string,
+  imageLink: string
+};
+
+export type Stream = {
+  name: string,
+  link: string
+};
+
 export type CommentInfo = {
-  personName: string,
-  personFullName: string,
-  personImageLink: string,
-  streamName: string,
+  person: Person,
+  stream: Stream,
   replyLink: string,
   comment: string
 };

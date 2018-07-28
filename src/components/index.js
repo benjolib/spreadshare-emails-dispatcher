@@ -1,5 +1,7 @@
-import test from './Test';
+import test from './templates/Test';
+import newComment from './templates/NewComment';
 
 module.exports = {
-  test
+  test,
+  newComment
 };
