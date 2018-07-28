@@ -44,7 +44,7 @@ export type CommentInfo = {
 export type UserProfile = {
   name: string,
   fullName: string,
-  tagLine: string,
+  tagline: string,
   followLink: string,
   imageLink: string
 };

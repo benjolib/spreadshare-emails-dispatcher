@@ -66,8 +66,6 @@ function Envelope(props) {
 }
 
 Envelope.propTypes = {
-  title: React.PropTypes.string.isRequired,
-  subTitle: React.PropTypes.string.isRequired,
   previewText: React.PropTypes.string.isRequired,
   children: React.PropTypes.node.isRequired
 };

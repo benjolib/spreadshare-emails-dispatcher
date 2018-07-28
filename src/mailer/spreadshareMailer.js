@@ -1,9 +1,5 @@
 // @flow
 
-import fs from 'fs';
-import util from 'util';
-import path from 'path';
-import handlebars from 'handlebars';
 import envelopes from './envelopes';
 import letter from './letter';
 import type {
@@ -21,36 +17,36 @@ export default class SpreadshareMailer implements SpreadshareMailerI {
     this.mailer = mailer;
   }
 
-  sendTestMail(email: string, greeting: string): Promise<void> {
+  async sendTestMail(email: string, greeting: string): Promise<void> {
     const envelope = envelopes.TestEmail(email);
     const content = {
       ...envelope,
-      html: letter('test', { greeting })
+      html: await getLetter('test', { greeting })
     };
     return this.mailer.sendMail(content);
   }
 
   async sendFriendJoinedEmail(
     email: string | Array<string>,
-    friendInfo: UserProfile
+    friend: UserProfile
   ): Promise<void> {
-    const envelope = envelopes.FriendJoined(email, friendInfo);
+    const envelope = envelopes.FriendJoined(email, friend);
     const content = {
       ...envelope,
-      html: await getLetter('FriendJoined', { friend: friendInfo })
+      html: await getLetter('friendJoined', friend)
     };
 
     return this.mailer.sendMail(content);
   }
 
-  sendCommentEmail(
+  async sendCommentEmail(
     email: string | Array<string>,
     commentInfo: CommentInfo
   ): Promise<void> {
     const envelope = envelopes.Comment(email, commentInfo);
     const content = {
       ...envelope,
-      html: letter('newComment', commentInfo)
+      html: await getLetter('newComment', commentInfo)
     };
 
     return this.mailer.sendMail(content);
@@ -70,20 +66,13 @@ export default class SpreadshareMailer implements SpreadshareMailerI {
   }
 }
 
-const envelopeCache: { [string]: (any) => string } = {};
-const readFile = util.promisify(fs.readFile);
-
 const getLetter = (templateName, data): Promise<string> => {
-  if (envelopeCache[templateName]) {
-    return Promise.resolve(envelopeCache[templateName](data));
+  let html = null;
+  try {
+    html = letter(templateName, data);
+  } catch (err) {
+    return Promise.reject(err);
   }
 
-  return readFile(
-    path.join('./templates', `${templateName}.hbs`),
-    'utf-8'
-  ).then(text => {
-    const template = handlebars.compile(text);
-    envelopeCache[templateName] = template;
-    return template(data);
-  });
+  return Promise.resolve(html);
 };
