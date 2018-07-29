@@ -8,7 +8,7 @@ function Footer() {
         <mj-image
           width={style.logoWidth}
           alt="logo"
-          src="https://s3.eu-central-1.amazonaws.com/spreadshare-public-assets/logo48x48.png"
+          src="https://s3.eu-central-1.amazonaws.com/spreadshare-public-assets/logo96x96.png"
         />
         <mj-spacer height="24px" />
         <mj-text

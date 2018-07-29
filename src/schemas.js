@@ -45,7 +45,7 @@ export const userProfileSchema = {
         },
         friend: {
           type: 'object',
-          required: ['name', 'fullName', 'tagline', 'imageLink', 'followLink'],
+          required: ['name', 'fullName', 'tagline', 'followLink'],
           properties: {
             name: {
               type: 'string'
@@ -102,7 +102,7 @@ export const commentSchema = {
           properties: {
             person: {
               type: 'object',
-              required: ['name', 'fullName', 'imageLink'],
+              required: ['name', 'fullName'],
               properties: {
                 name: {
                   type: 'string'
@@ -215,7 +215,7 @@ export const digestSchema = {
                   imageLink: { type: 'string', format: 'url' },
                   contributor: {
                     type: 'object',
-                    required: ['name', 'fullName', 'imageLink'],
+                    required: ['name', 'fullName'],
                     properties: {
                       name: {
                         type: 'string'

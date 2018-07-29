@@ -5,6 +5,10 @@ import UserName from './UserName';
 
 function PostWithUser(props) {
   const { contributor, stream } = props;
+  let { imageLink } = contributor;
+  if (!imageLink) {
+    imageLink = `https://api.adorable.io/avatars/98/${contributor.name}`;
+  }
   const userNameProps = {
     name: contributor.name,
     middleText: 'added a listing to',
@@ -23,7 +27,7 @@ function PostWithUser(props) {
               padding-bottom="8px"
               mj-class="avatar-small"
               padding-left="0px"
-              src={contributor.imageLink}
+              src={imageLink}
             />
           </mj-column>
           <mj-column mj-class="column-auto-width" padding-bottom="8px">
@@ -52,7 +56,7 @@ PostWithUser.propTypes = {
   contributor: PropTypes.shape({
     name: PropTypes.string.isRequired,
     fullName: PropTypes.string.isRequired,
-    imageLink: PropTypes.string.isRequired
+    imageLink: PropTypes.string
   }).isRequired
 };
 

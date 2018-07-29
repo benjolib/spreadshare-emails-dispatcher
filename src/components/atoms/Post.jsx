@@ -62,7 +62,8 @@ function Post({ imageLink, votesCount, columns }) {
       <tr style={rowStyle}>
         <td style={votesStyle}>
           <img
-            src="https://s3.eu-central-1.amazonaws.com/spreadshare-public-assets/vote-lightning-18x22.png"
+            style={{ width: '14px' }}
+            src="https://s3.eu-central-1.amazonaws.com/spreadshare-public-assets/vote-lightning-34x42.png"
             alt="Votes"
           />
           <div

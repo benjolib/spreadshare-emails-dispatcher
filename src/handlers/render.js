@@ -25,7 +25,6 @@ const data = {
   friendJoined: {
     name: 'Benjamin',
     fullName: 'Benjamin Libor',
-    imageLink: 'https://ca.slack-edge.com/T7S34FEUD-U7RUFNSD8-223ce264a05a-72',
     tagline:
       "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
     followLink: 'https://google.com'
@@ -67,10 +66,8 @@ const data = {
         votesCount: '5',
         imageLink: 'https://spreadshare.co/rowimages/26344.png',
         contributor: {
-          name: 'Benjamin',
-          fullName: 'Benjamin Libor',
-          imageLink:
-            'https://ca.slack-edge.com/T7S34FEUD-U7RUFNSD8-223ce264a05a-72'
+          name: 'Shashank',
+          fullName: 'Shashank Tomar'
         },
         columns: [
           {
@@ -96,9 +93,7 @@ const data = {
         imageLink: 'https://spreadshare.co/rowimages/26344.png',
         contributor: {
           name: 'Benjamin',
-          fullName: 'Benjamin Libor',
-          imageLink:
-            'https://ca.slack-edge.com/T7S34FEUD-U7RUFNSD8-223ce264a05a-72'
+          fullName: 'Benjamin Libor'
         },
         columns: [
           {

@@ -78,11 +78,6 @@ module.exports = {
     textDecoration: 'none'
   },
 
-  circleImage: {
-    borderRadius: '9999px',
-    width: '64px !important'
-  },
-
   userBox: {
     marginLeft: '20px !important',
     marginTop: '5px !important',

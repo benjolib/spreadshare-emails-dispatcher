@@ -25,7 +25,7 @@ type Frequency = 'daily' | 'weekly' | 'monthly';
 export type Person = {
   name: string,
   fullName: string,
-  imageLink: string
+  imageLink?: string
 };
 
 export type Stream = {

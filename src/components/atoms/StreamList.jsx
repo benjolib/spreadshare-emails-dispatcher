@@ -37,7 +37,7 @@ StreamList.propTypes = {
       contributor: PropTypes.shape({
         name: PropTypes.string.isRequired,
         fullName: PropTypes.string.isRequired,
-        imageLink: PropTypes.string.isRequired
+        imageLink: PropTypes.string
       }).isRequired
     })
   )

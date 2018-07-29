@@ -25,7 +25,7 @@ function FriendJoined({ fullName, imageLink, tagline, followLink }) {
 
 FriendJoined.propTypes = {
   fullName: PropTypes.string.isRequired,
-  imageLink: PropTypes.string.isRequired,
+  imageLink: PropTypes.string,
   tagline: PropTypes.string.isRequired,
   followLink: PropTypes.string.isRequired
 };
