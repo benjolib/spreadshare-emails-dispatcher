@@ -17,29 +17,55 @@ export interface SpreadshareMailerI {
     commentInfo: CommentInfo
   ): Promise<void>;
 
-  sendSubscriptionDigest(
-    email: string | Array<string>,
-    digest: SubscriptionDigest
-  ): Promise<void>;
+  sendDigestEmail(email: string | Array<string>, digest: Digest): Promise<void>;
 }
 
+type Frequency = 'daily' | 'weekly' | 'monthly';
+
+export type Person = {
+  name: string,
+  fullName: string,
+  imageLink: string
+};
+
+export type Stream = {
+  name: string,
+  link: string
+};
+
+type Column = {
+  text: string,
+  link?: string
+};
+
+type Post = {
+  columns: Array<Column>,
+  votesCount: number,
+  commentsCount: number,
+  imageLink: string,
+  contributor: Person
+};
+
+export type UserProfile = Person & {
+  tagline: string,
+  followLink: string
+};
+
 export type CommentInfo = {
-  personName: string,
-  personFullName: string,
-  personImageLink: string,
-  streamName: string,
+  person: Person,
+  stream: Stream,
   replyLink: string,
   comment: string
 };
 
-export type UserProfile = {
+export type Digest = {
+  frequency: Frequency,
   name: string,
-  fullName: string,
-  tagLine: string,
-  followLink: string,
-  imageLink: string
+  link: string,
+  digest: Array<Post>
 };
 
+// mail types
 export type EmailContent = {
   from: string,
   to: Array<string> | string,
@@ -53,26 +79,17 @@ export type MailgunOptions = {
   from: string
 };
 
-type Frequency = 'daily' | 'weekly' | 'monthly';
-
-type Post = {
-  addedBy: string,
-  fields: string,
-  description: string
+// http event types
+export type Context = {
+  requestId: string
 };
 
-type Publication = {
-  title: string,
-  description: string,
-  posts: Array<Post>
+export type RenderHtmlEvent = {
+  pathParameters: {
+    type: string
+  }
 };
 
-export type SubscriptionDigest = {
-  frequency: Frequency,
-  publication: Publication
-};
-
-// http types
 export type TestEmailEvent = {
   body: {
     email: string,
@@ -87,16 +104,17 @@ export type FriendJoinedEmailEvent = {
   }
 };
 
-export type SubscriptionDigestEvent = {
-  body: {
-    emails: Array<string> | string,
-    digest: SubscriptionDigest
-  }
-};
-
 export type CommentEmailEvent = {
   body: {
     emails: Array<string> | string,
     commentInfo: CommentInfo
+  }
+};
+
+export type DigestEvent = {
+  context: Context,
+  body: {
+    emails: Array<string> | string,
+    digest: Digest
   }
 };

@@ -52,16 +52,16 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"emails\": \"shashank004@gmail.com\",\n\t\"commentInfo\": {\n\t\t\"personName\": \"Ben\",\n\t\t\"personFullName\": \"Benjamin Libor\",\n\t\t\"streamName\": \"Design Tools\",\n\t\t\"personImageLink\": \"https://ca.slack-edge.com/T7S34FEUD-U7RUFNSD8-223ce264a05a-72\",\n\t\t\"replyLink\": \"https://google.com\",\n\t\t\"comment\": \"Lorem ipsum dolor sit amet, possim aperiam admodum te vix, et qui natum iudico iisque. Suscipit consequuntur at mel, has sale dicat vulputate at, te sed idque inani nonumes. Oratio perpetua no eos, sea ut graece laoreet adipisci, vim molestie corrumpit adversarium ad. Sed vero mutat et, id usu tibique insolens repudiare. Stet lorem nominavi et sit. Qui no ubique dignissim vituperatoribus, cibo dolore graeco in duo\"\n\t}\n}"
+					"raw": "{\n\t\"emails\": \"shashank004@gmail.com\",\n\t\"friend\": {\n\t\t\"name\": \"Ben\",\n\t\t\"fullName\": \"Benjamin Libor\",\n\t\t\"tagline\": \"Spreadshare founder\",\n\t\t\"imageLink\": \"https://ca.slack-edge.com/T7S34FEUD-U7RUFNSD8-223ce264a05a-72\",\n\t\t\"followLink\": \"https://google.com\"\n\t}\n}"
 				},
 				"url": {
-					"raw": "{{spreadshare-emails}}/email/new-comment",
+					"raw": "{{spreadshare-emails}}/email/friend-joined",
 					"host": [
 						"{{spreadshare-emails}}"
 					],
 					"path": [
 						"email",
-						"new-comment"
+						"friend-joined"
 					]
 				}
 			},
@@ -83,7 +83,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"emails\": \"shashank004@gmail.com\",\n\t\"commentInfo\": {\n\t\t\"personName\": \"Ben\",\n\t\t\"personFullName\": \"Benjamin Libor\",\n\t\t\"streamName\": \"Design Tools\",\n\t\t\"personImageLink\": \"https://ca.slack-edge.com/T7S34FEUD-U7RUFNSD8-223ce264a05a-72\",\n\t\t\"replyLink\": \"https://google.com\",\n\t\t\"comment\": \"Lorem ipsum dolor sit amet, possim aperiam admodum te vix, et qui natum iudico iisque. Suscipit consequuntur at mel, has sale dicat vulputate at, te sed idque inani nonumes. Oratio perpetua no eos, sea ut graece laoreet adipisci, vim molestie corrumpit adversarium ad. Sed vero mutat et, id usu tibique insolens repudiare. Stet lorem nominavi et sit. Qui no ubique dignissim vituperatoribus, cibo dolore graeco in duo\"\n\t}\n}"
+					"raw": "{\n\t\"emails\": [\"shashank004@gmail.com\", \"shashank.darktears@gmail.com\"],\n\t\"commentInfo\": {\n\t\t\"person\": {\n\t\t\t\"name\": \"Ben\",\t\n\t\t\t\"fullName\": \"Benjamin Libor\",\n\t\t\t\"imageLink\": \"https://ca.slack-edge.com/T7S34FEUD-U7RUFNSD8-223ce264a05a-72\"\n\t\t},\n\t\t\"stream\": {\n\t\t\t\"name\": \"Design Tools\",\n\t\t\t\"link\": \"https://google.com\"\n\t\t},\n\t\t\"replyLink\": \"https://google.com\",\n\t\t\"comment\": \"Lorem ipsum dolor sit amet, possim aperiam admodum te vix, et qui natum iudico iisque. Suscipit consequuntur at mel, has sale dicat vulputate at, te sed idque inani nonumes. Oratio perpetua no eos, sea ut graece laoreet adipisci, vim molestie corrumpit adversarium ad. Sed vero mutat et, id usu tibique insolens repudiare. Stet lorem nominavi et sit. Qui no ubique dignissim vituperatoribus, cibo dolore graeco in duo\"\n\t}\n}"
 				},
 				"url": {
 					"raw": "{{spreadshare-emails}}/email/new-comment",

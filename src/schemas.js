@@ -1,5 +1,6 @@
 export const testEmailSchema = {
   type: 'object',
+  required: ['body'],
   properties: {
     body: {
       type: 'object',
@@ -19,6 +20,7 @@ export const testEmailSchema = {
 
 export const userProfileSchema = {
   type: 'object',
+  required: ['body'],
   properties: {
     body: {
       type: 'object',
@@ -43,7 +45,7 @@ export const userProfileSchema = {
         },
         friend: {
           type: 'object',
-          required: ['name', 'fullName', 'tagLine', 'imageLink', 'followLink'],
+          required: ['name', 'fullName', 'tagline', 'imageLink', 'followLink'],
           properties: {
             name: {
               type: 'string'
@@ -51,7 +53,7 @@ export const userProfileSchema = {
             fullName: {
               type: 'string'
             },
-            tagLine: {
+            tagline: {
               type: 'string'
             },
             imageLink: {
@@ -71,6 +73,7 @@ export const userProfileSchema = {
 
 export const commentSchema = {
   type: 'object',
+  required: ['body'],
   properties: {
     body: {
       type: 'object',
@@ -95,27 +98,36 @@ export const commentSchema = {
         },
         commentInfo: {
           type: 'object',
-          required: [
-            'personName',
-            'personFullName',
-            'personImageLink',
-            'streamName',
-            'replyLink',
-            'comment'
-          ],
+          required: ['person', 'stream', 'replyLink', 'comment'],
           properties: {
-            personName: {
-              type: 'string'
+            person: {
+              type: 'object',
+              required: ['name', 'fullName', 'imageLink'],
+              properties: {
+                name: {
+                  type: 'string'
+                },
+                fullName: {
+                  type: 'string'
+                },
+                imageLink: {
+                  type: 'string',
+                  format: 'url'
+                }
+              }
             },
-            personFullName: {
-              type: 'string'
-            },
-            personImageLink: {
-              type: 'string',
-              format: 'url'
-            },
-            streamName: {
-              type: 'string'
+            stream: {
+              type: 'object',
+              required: ['name', 'link'],
+              properties: {
+                name: {
+                  type: 'string'
+                },
+                link: {
+                  type: 'string',
+                  format: 'url'
+                }
+              }
             },
             replyLink: {
               type: 'string',
@@ -131,12 +143,22 @@ export const commentSchema = {
   }
 };
 
-export const subscriptionDigestSchema = {
+export const digestSchema = {
   type: 'object',
+  required: ['context', 'body'],
   properties: {
+    context: {
+      type: 'object',
+      required: ['requestId'],
+      properties: {
+        requestId: {
+          type: 'string'
+        }
+      }
+    },
     body: {
       type: 'object',
-      required: ['emails', 'frequency', 'publication'],
+      required: ['emails', 'digest'],
       properties: {
         emails: {
           anyOf: [
@@ -155,24 +177,58 @@ export const subscriptionDigestSchema = {
             }
           ]
         },
-        frequency: {
-          type: 'string',
-          enum: ['daily', 'weekly', 'monthly']
-        },
-        publication: {
+        digest: {
           type: 'object',
-          required: ['title', 'description', 'posts'],
+          required: ['frequency', 'name', 'link', 'digest'],
           properties: {
-            title: { type: 'string' },
-            description: { type: 'string' },
-            posts: {
+            frequency: {
+              type: 'string',
+              enum: ['daily', 'weekly', 'monthly']
+            },
+            name: { type: 'string' },
+            link: {
+              type: 'string',
+              format: 'url'
+            },
+            digest: {
               type: 'array',
               items: {
                 type: 'object',
-                required: ['title', 'description'],
+                required: [
+                  'columns',
+                  'votesCount',
+                  'commentsCount',
+                  'imageLink',
+                  'contributor'
+                ],
                 properties: {
-                  title: { type: 'string' },
-                  description: { type: 'string' }
+                  columns: {
+                    type: 'object',
+                    required: ['text'],
+                    properties: {
+                      text: { type: 'string' },
+                      link: { type: 'string', format: 'url' }
+                    }
+                  },
+                  votesCount: { type: 'number' },
+                  commentsCount: { type: 'number' },
+                  imageLink: { type: 'string', format: 'url' },
+                  contributor: {
+                    type: 'object',
+                    required: ['name', 'fullName', 'imageLink'],
+                    properties: {
+                      name: {
+                        type: 'string'
+                      },
+                      fullName: {
+                        type: 'string'
+                      },
+                      imageLink: {
+                        type: 'string',
+                        format: 'url'
+                      }
+                    }
+                  }
                 }
               },
               uniqueItems: true,

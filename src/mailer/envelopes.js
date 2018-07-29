@@ -24,15 +24,15 @@ const envelopes: { [string]: EnvelopeFactory } = {
     from: `"Spreadshare" <${from || defaultFromAddress}>`,
     to,
     // $FlowIgnore
-    subject: `${content.personName} added a comment to ${content.streamName}`
+    subject: `${content.person.name} added a comment to ${content.stream.name}`
   }),
-  SubscriptionDigest: (to, content, from) => ({
+  Digest: (to, content, from) => ({
     from: `"Spreadshare" <${from || defaultFromAddress}>`,
     to,
     // $FlowIgnore
     subject: `${frequencyToTextMap[content.frequency]} in ${
       // $FlowIgnore
-      content.publication.title
+      content.stream.name
     }`
   })
 };
