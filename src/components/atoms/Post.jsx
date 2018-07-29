@@ -55,14 +55,16 @@ function Post({ imageLink, votesCount, columns }) {
     borderRadius: '10px'
   };
 
-  const imagePresent =
-    imageLink !== null && imageLink !== undefined;
+  const imagePresent = imageLink !== null && imageLink !== undefined;
 
   return (
     <mj-table>
       <tr style={rowStyle}>
         <td style={votesStyle}>
-          <img src="https://s3.eu-central-1.amazonaws.com/spreadshare-public-assets/vote-lightning-18x22.png" alt="Votes" />
+          <img
+            src="https://s3.eu-central-1.amazonaws.com/spreadshare-public-assets/vote-lightning-18x22.png"
+            alt="Votes"
+          />
           <div
             style={{
               color: style.colors.lightText
@@ -88,11 +90,7 @@ function Post({ imageLink, votesCount, columns }) {
               </td>
             );
           }
-          return (
-            <td style={rowItemStyle}>
-              {c.text}
-            </td>
-          );
+          return <td style={rowItemStyle}>{c.text}</td>;
         })}
       </tr>
     </mj-table>
