@@ -12,19 +12,19 @@ module.exports = {
     background: '#F4F4F4',
     footer: '#F8F8FB',
     contentBackground: '#ffffff',
-    titleText: '#2a1e3e',
-    subTitleText: '#9baabf',
-    userName: '#2a1e3e',
-    detailText: '#9baabf'
+    darkText: '#2a1e3e',
+    lightText: '#9baabf'
   },
 
   sizes: {
-    avatar: '64px'
+    avatar: '64px',
+    avatarSmall: '28px'
   },
 
   textSizes: {
     title: '40px',
-    subTitle: '24px'
+    subTitle: '24px',
+    emailText: '16px'
   },
 
   fonts: {
@@ -34,9 +34,10 @@ module.exports = {
 
   fontWeights: {
     default: 'normal',
-    title: 'bold',
-    subTitle: '200',
-    userName: '600'
+    bold: 'bold',
+    thin: '200',
+    light: '300',
+    semiBold: '600'
   },
 
   lineHeights: {
@@ -49,6 +50,16 @@ module.exports = {
     color: '#2DaD6B',
     fontFamily:
       '"Roboto Mono", "monospace", "Lucida Grande", "Lucida Sans Unicode", Tahoma, Sans-Serif',
+    fontWeight: 'normal',
+    textAlign: 'left',
+    lineHeight: 1.3,
+    textDecoration: 'none'
+  },
+
+  aSimple: {
+    color: '#2DaD6B',
+    fontFamily:
+      '"Lato", "monospace", "Lucida Grande", "Lucida Sans Unicode", Tahoma, Sans-Serif',
     fontWeight: 'normal',
     textAlign: 'left',
     lineHeight: 1.3,

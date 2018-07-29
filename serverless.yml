@@ -8,7 +8,6 @@ plugins:
   - serverless-webpack
   - serverless-offline
 
-# serverless-webpack configuration
 # Enable auto-packing of external modules
 custom:
   webpack:
@@ -68,15 +67,15 @@ functions:
           path: email/new-comment
           cors: true
           private: true
-  subscriptionDigest:
-    handler: src/handlers/subscriptionDigest.handler
+  digest:
+    handler: src/handlers/digest.handler
     description: Send a Subscriptions Digest email
-    # events:
-    #   - http:
-    #       method: post
-    #       path: email/subscription-digest
-    #       cors: true
-    #       private: true
+    events:
+      - http:
+          method: post
+          path: email/digest
+          cors: true
+          private: true
 
 package:
   individually: true

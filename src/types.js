@@ -17,11 +17,10 @@ export interface SpreadshareMailerI {
     commentInfo: CommentInfo
   ): Promise<void>;
 
-  sendSubscriptionDigest(
-    email: string | Array<string>,
-    digest: SubscriptionDigest
-  ): Promise<void>;
+  sendDigestEmail(email: string | Array<string>, digest: Digest): Promise<void>;
 }
+
+type Frequency = 'daily' | 'weekly' | 'monthly';
 
 export type Person = {
   name: string,
@@ -34,6 +33,24 @@ export type Stream = {
   link: string
 };
 
+type Column = {
+  text: string,
+  link?: string
+};
+
+type Post = {
+  columns: Array<Column>,
+  votesCount: number,
+  commentsCount: number,
+  imageLink: string,
+  contributor: Person
+};
+
+export type UserProfile = Person & {
+  tagline: string,
+  followLink: string
+};
+
 export type CommentInfo = {
   person: Person,
   stream: Stream,
@@ -41,14 +58,14 @@ export type CommentInfo = {
   comment: string
 };
 
-export type UserProfile = {
+export type Digest = {
+  frequency: Frequency,
   name: string,
-  fullName: string,
-  tagline: string,
-  followLink: string,
-  imageLink: string
+  link: string,
+  digest: Array<Post>
 };
 
+// mail types
 export type EmailContent = {
   from: string,
   to: Array<string> | string,
@@ -62,36 +79,21 @@ export type MailgunOptions = {
   from: string
 };
 
-type Frequency = 'daily' | 'weekly' | 'monthly';
-
-type Post = {
-  addedBy: string,
-  fields: string,
-  description: string
-};
-
-type Publication = {
-  title: string,
-  description: string,
-  posts: Array<Post>
-};
-
-export type SubscriptionDigest = {
-  frequency: Frequency,
-  publication: Publication
-};
-
-// http types
-export type TestEmailEvent = {
-  body: {
-    email: string,
-    greeting?: string
-  }
+// http event types
+export type Context = {
+  requestId: string
 };
 
 export type RenderHtmlEvent = {
   pathParameters: {
     type: string
+  }
+};
+
+export type TestEmailEvent = {
+  body: {
+    email: string,
+    greeting?: string
   }
 };
 
@@ -102,21 +104,17 @@ export type FriendJoinedEmailEvent = {
   }
 };
 
-export type Context = {
-  requestId: string
-};
-
-export type SubscriptionDigestEvent = {
-  context: Context,
-  body: {
-    emails: Array<string> | string,
-    digest: SubscriptionDigest
-  }
-};
-
 export type CommentEmailEvent = {
   body: {
     emails: Array<string> | string,
     commentInfo: CommentInfo
+  }
+};
+
+export type DigestEvent = {
+  context: Context,
+  body: {
+    emails: Array<string> | string,
+    digest: Digest
   }
 };

@@ -32,7 +32,7 @@ function Footer() {
           color="#2DaD6B"
           letter-spacing="normal"
         >
-          <a style={style.a} href="#">
+          <a style={style.a} href="https://spreadshare.co">
             Change your email preferences
           </a>
         </mj-text>

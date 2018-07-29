@@ -52,14 +52,14 @@ export default class SpreadshareMailer implements SpreadshareMailerI {
     return this.mailer.sendMail(content);
   }
 
-  async sendSubscriptionDigest(
+  async sendDigestEmail(
     email: string | Array<string>,
     digest: SubscriptionDigest
   ): Promise<void> {
-    const envelope = envelopes.SubscriptionDigest(email, digest);
+    const envelope = envelopes.Digest(email, digest);
     const content = {
       ...envelope,
-      html: await getLetter('SubscriptionDigest', { digest })
+      html: await getLetter('digest', digest)
     };
 
     return this.mailer.sendMail(content);

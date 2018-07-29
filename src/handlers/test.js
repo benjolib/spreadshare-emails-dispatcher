@@ -10,8 +10,9 @@ import type { TestEmailEvent } from '../types';
 import { errorRes } from '../utils/http';
 
 export const testEmail = async (event: TestEmailEvent) => {
-  const { email, greeting } = event.body;
-  const [err, result] = await to(mailer.sendTestMail(email, greeting || 'Hi'));
+  const { email, digest } = event.body;
+  // const [err, result] = await to(mailer.sendTestMail(email, greeting || 'Hi'));
+  const [err, result] = await to(mailer.sendDigestEmail(email, digest));
   if (err) {
     console.log('error: ', err);
     return errorRes(500, err.message);
