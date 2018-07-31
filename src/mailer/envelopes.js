@@ -32,8 +32,13 @@ const envelopes: { [string]: EnvelopeFactory } = {
     // $FlowIgnore
     subject: `${frequencyToTextMap[content.frequency]} in ${
       // $FlowIgnore
-      content.stream.name
+      content.name
     }`
+  }),
+  WelcomeEmail: (to, _, from) => ({
+    from: `"Spreadshare" <${from || defaultFromAddress}>`,
+    to,
+    subject: 'Welcome to Spreadshare'
   })
 };
 

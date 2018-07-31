@@ -5,10 +5,16 @@ import letter from './letter';
 import type {
   SpreadshareMailerI,
   MailerI,
-  SubscriptionDigest,
   UserProfile,
-  CommentInfo
+  CommentInfo,
+  Digest
 } from '../types';
+
+const welcomeEmailText = (name: string) => `Hi ${name},
+
+Thank you for joining! Btw, any topic you’re most interested in keeping track recently?
+
+- Ben`;
 
 export default class SpreadshareMailer implements SpreadshareMailerI {
   mailer: MailerI;
@@ -54,7 +60,7 @@ export default class SpreadshareMailer implements SpreadshareMailerI {
 
   async sendDigestEmail(
     email: string | Array<string>,
-    digest: SubscriptionDigest
+    digest: Digest
   ): Promise<void> {
     const envelope = envelopes.Digest(email, digest);
     const content = {
@@ -62,6 +68,15 @@ export default class SpreadshareMailer implements SpreadshareMailerI {
       html: await getLetter('digest', digest)
     };
 
+    return this.mailer.sendMail(content);
+  }
+
+  async sendWelcomeEmail(email: string, name: string): Promise<void> {
+    const envelope = envelopes.WelcomeEmail(email);
+    const content = {
+      ...envelope,
+      text: welcomeEmailText(name)
+    };
     return this.mailer.sendMail(content);
   }
 }

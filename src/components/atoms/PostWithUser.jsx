@@ -14,7 +14,7 @@ function PostWithUser(props) {
     middleText: 'added a listing to',
     linkText: stream.name,
     link: stream.link,
-    withImage: 'true',
+    withImage: true,
     anchorStyle: 'simple'
   };
 

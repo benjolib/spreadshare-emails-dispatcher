@@ -18,6 +18,26 @@ export const testEmailSchema = {
   }
 };
 
+export const welcomeEmailSchema = {
+  type: 'object',
+  required: ['body'],
+  properties: {
+    body: {
+      type: 'object',
+      required: ['email', 'name'],
+      properties: {
+        email: {
+          type: 'string',
+          format: 'email'
+        },
+        name: {
+          type: 'string'
+        }
+      }
+    }
+  }
+};
+
 export const userProfileSchema = {
   type: 'object',
   required: ['body'],

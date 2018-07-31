@@ -23,7 +23,7 @@ See the scripts section in package.json
 * [x] test email api
 * [x] friend joined email api
 * [ ] summaries email api
-* [ ] welcome email api
+* [x] welcome email api
 * [ ] new stream (followers of the curator api)
 * [ ] new follower email api
 * [ ] new collaboration email api

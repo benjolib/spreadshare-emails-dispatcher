@@ -49,6 +49,15 @@ functions:
           path: email/test
           cors: true
           private: true
+  welcome:
+    handler: src/handlers/welcome.handler
+    description: Send a welcome email
+    events:
+      - http:
+          method: post
+          path: email/welcome
+          cors: true
+          private: true
   friendJoined:
     handler: src/handlers/friendJoined.handler
     description: Send a Friend Joined email
@@ -70,12 +79,12 @@ functions:
   digest:
     handler: src/handlers/digest.handler
     description: Send a Subscriptions Digest email
-    events:
-      - http:
-          method: post
-          path: email/digest
-          cors: true
-          private: true
+    # events:
+    #   - http:
+    #       method: post
+    #       path: email/digest
+    #       cors: true
+    #       private: true
 
 package:
   individually: true

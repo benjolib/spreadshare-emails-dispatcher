@@ -7,7 +7,7 @@ import { digestSchema } from '../schemas';
 import { mailer } from './factory';
 import type { DigestEvent } from '../types';
 
-export const digestHandler = async (event: DigestEvent) => {
+export const handler = async (event: DigestEvent) => {
   console.log('Invoked subscriptionDigest');
   console.log(event);
   const { context } = event;
@@ -23,6 +23,6 @@ export const digestHandler = async (event: DigestEvent) => {
   console.log('email client response: ', result);
 };
 
-export const handler = middy(digestHandler)
-  .use(jsonBodyParser())
-  .use(validator({ inputSchema: digestSchema }));
+// export const handler = middy(digestHandler)
+//   .use(jsonBodyParser())
+//   .use(validator({ inputSchema: digestSchema }));

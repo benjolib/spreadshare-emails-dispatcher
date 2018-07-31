@@ -18,6 +18,8 @@ export interface SpreadshareMailerI {
   ): Promise<void>;
 
   sendDigestEmail(email: string | Array<string>, digest: Digest): Promise<void>;
+
+  sendWelcomeEmail(email: string, name: string): Promise<void>;
 }
 
 type Frequency = 'daily' | 'weekly' | 'monthly';
@@ -70,7 +72,8 @@ export type EmailContent = {
   from: string,
   to: Array<string> | string,
   subject: string,
-  html: string
+  html?: string,
+  text?: string
 };
 
 export type MailgunOptions = {
@@ -116,5 +119,12 @@ export type DigestEvent = {
   body: {
     emails: Array<string> | string,
     digest: Digest
+  }
+};
+
+export type WelcomeEmailEvent = {
+  body: {
+    email: string,
+    name: string
   }
 };
