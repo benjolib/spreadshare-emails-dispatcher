@@ -20,6 +20,12 @@ const envelopes: { [string]: EnvelopeFactory } = {
     // $FlowIgnore
     subject: `${content.name} Joined Spreadshare`
   }),
+  NewFollower: (to, content, from) => ({
+    from: `"Spreadshare" <${from || defaultFromAddress}>`,
+    to,
+    // $FlowIgnore
+    subject: `${content.name} started following you`
+  }),
   Comment: (to, content, from) => ({
     from: `"Spreadshare" <${from || defaultFromAddress}>`,
     to,

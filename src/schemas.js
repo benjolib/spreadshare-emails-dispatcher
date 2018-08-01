@@ -44,7 +44,7 @@ export const userProfileSchema = {
   properties: {
     body: {
       type: 'object',
-      required: ['emails', 'friend'],
+      required: ['emails', 'person'],
       properties: {
         emails: {
           anyOf: [
@@ -63,7 +63,7 @@ export const userProfileSchema = {
             }
           ]
         },
-        friend: {
+        person: {
           type: 'object',
           required: ['name', 'fullName', 'tagline', 'followLink'],
           properties: {

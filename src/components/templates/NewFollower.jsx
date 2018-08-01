@@ -1,12 +1,12 @@
 import React from 'react';
 import UserProfileComponent from './UserProfileComponent';
 
-function FriendJoined(data) {
+function NewFollower(data) {
   const { fullName } = data;
-  const subTitle = `Your friend ${fullName} joined Spreadshare today`;
-  const title = 'A Friend Joined';
+  const subTitle = `${fullName} started following you`;
+  const title = 'New Follower';
   const props = { ...data, title, subTitle };
   return <UserProfileComponent {...props} />;
 }
 
-export default FriendJoined;
+export default NewFollower;

@@ -17,6 +17,7 @@
   ],
   "scripts": {
     "dev": "sls offline start",
+    "deploy:dev": "sls deploy -s dev",
     "deploy:stage": "sls deploy -s stage",
     "deploy:prod": "sls deploy -s prod",
     "invoke:local": "sls invoke local --function",

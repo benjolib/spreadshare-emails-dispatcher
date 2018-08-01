@@ -9,9 +9,9 @@ import httpJsonErrorHandler from '../middlewares/httpJsonErrorHandler';
 import type { UserProfileEmailEvent } from '../types';
 import { errorRes } from '../utils/http';
 
-export const friendJoined = async (event: UserProfileEmailEvent) => {
+export const newFollower = async (event: UserProfileEmailEvent) => {
   const { emails, person } = event.body;
-  const [err, result] = await to(mailer.sendFriendJoinedEmail(emails, person));
+  const [err, result] = await to(mailer.sendNewFollowerEmail(emails, person));
   if (err) {
     console.log('error: ', err);
     return errorRes(500, err.message);
@@ -25,7 +25,7 @@ export const friendJoined = async (event: UserProfileEmailEvent) => {
   };
 };
 
-export const handler = middy(friendJoined)
+export const handler = middy(newFollower)
   .use(jsonBodyParser())
   .use(validator({ inputSchema: userProfileSchema }))
   .use(httpJsonErrorHandler());

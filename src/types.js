@@ -12,6 +12,11 @@ export interface SpreadshareMailerI {
     friendInfo: UserProfile
   ): Promise<void>;
 
+  sendNewFollowerEmail(
+    email: string | Array<string>,
+    follower: UserProfile
+  ): Promise<void>;
+
   sendCommentEmail(
     email: string | Array<string>,
     commentInfo: CommentInfo
@@ -100,10 +105,10 @@ export type TestEmailEvent = {
   }
 };
 
-export type FriendJoinedEmailEvent = {
+export type UserProfileEmailEvent = {
   body: {
     emails: Array<string> | string,
-    friend: UserProfile
+    person: UserProfile
   }
 };
 

@@ -12,7 +12,7 @@ import type {
 
 const welcomeEmailText = (name: string) => `Hi ${name},
 
-Thank you for joining! Btw, any topic you’re most interested in keeping track recently?
+Thank you for joining! Btw, any topic you’re most interested in keeping track? Just let me know and we‘ll get it on Spreadshare next.
 
 - Ben`;
 
@@ -40,6 +40,19 @@ export default class SpreadshareMailer implements SpreadshareMailerI {
     const content = {
       ...envelope,
       html: await getLetter('friendJoined', friend)
+    };
+
+    return this.mailer.sendMail(content);
+  }
+
+  async sendNewFollowerEmail(
+    email: string | Array<string>,
+    follower: UserProfile
+  ): Promise<void> {
+    const envelope = envelopes.NewFollower(email, follower);
+    const content = {
+      ...envelope,
+      html: await getLetter('newFollower', follower)
     };
 
     return this.mailer.sendMail(content);
