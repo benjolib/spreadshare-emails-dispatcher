@@ -67,6 +67,15 @@ functions:
           path: email/friend-joined
           cors: true
           private: true
+  newFollower:
+    handler: src/handlers/newFollower.handler
+    description: Send a New Follower email
+    events:
+    - http:
+        method: post
+        path: email/new-follower
+        cors: true
+        private: true
   newComment:
     handler: src/handlers/comment.handler
     description: Send a New Comment email

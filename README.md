@@ -68,6 +68,29 @@ Example:
 
 -----------
 
+### Welcome Email
+`POST /email/welcome`
+
+#### Request Body:
+
+Fields:
+
+* email - `required`
+* name - `required`
+
+Example:
+```
+{
+	"email": "shashank004@gmail.com",
+	"name": "Shashank Tomar"
+}
+```
+
+#### Response Codes:
+200
+
+-----------
+
 ### Friend Joined Email
 `POST /email/friend-joined`
 
@@ -76,7 +99,41 @@ Example:
 Fields:
 
 * emails - Array of emails or a single email, `required`
-* friend - `required`
+* person - `required`
+    * name - `required`
+    * fullName - `required`
+    * tagLine - `required`
+    * imageLink - `required`, `a valid url`
+    * followLink - `required`, `a valid url`
+
+Example:
+```
+{
+	"emails": "shashank004@gmail.com",
+	"friend": {
+		"name": "Ben",
+		"fullName": "Benjamin Libor",
+		"tagLine": "Spreadshare founder",
+		"imageLink": "https://ca.slack-edge.com/T7S34FEUD-U7RUFNSD8-223ce264a05a-72",
+		"followLink": "https://google.com"
+	}
+}
+```
+
+#### Response Codes:
+200
+
+-----------
+
+### New Follower Email
+`POST /email/new-follower`
+
+#### Request Body:
+
+Fields:
+
+* emails - Array of emails or a single email, `required`
+* person - `required`
     * name - `required`
     * fullName - `required`
     * tagLine - `required`
