@@ -6,6 +6,7 @@ const mw = () => ({
       // as per JSON spec http://jsonapi.org/examples/#error-objects-basics
       // eslint-disable-next-line
       handler.response = {
+        statusCode: handler.error.statusCode,
         body: JSON.stringify({
           errors: [
             {
