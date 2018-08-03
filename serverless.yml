@@ -76,6 +76,15 @@ functions:
         path: email/new-follower
         cors: true
         private: true
+  newSubscriber:
+    handler: src/handlers/newSubscriber.handler
+    description: Send a New Subscriber email
+    events:
+    - http:
+        method: post
+        path: email/new-subscriber
+        cors: true
+        private: true
   newComment:
     handler: src/handlers/comment.handler
     description: Send a New Comment email

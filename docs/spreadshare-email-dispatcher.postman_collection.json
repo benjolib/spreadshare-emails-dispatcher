@@ -6,6 +6,7 @@
 	},
 	"item": [
 		{
+			"_postman_id": "04d2cadf-410e-41ee-8857-9cada87ac7e5",
 			"name": "Test Email",
 			"request": {
 				"method": "POST",
@@ -21,7 +22,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"email\": \"shashank004@gmail.com\"\n}"
+					"raw": "{\n\t\"email\": \"shashank004@gmail.com\",\n\t\"greeting\": \"Howdy!\"\n}"
 				},
 				"url": {
 					"raw": "{{spreadshare-emails}}/email/test",
@@ -37,6 +38,7 @@
 			"response": []
 		},
 		{
+			"_postman_id": "db2e7b83-45b1-4874-87bc-c12af990389f",
 			"name": "Friend Joined",
 			"request": {
 				"method": "POST",
@@ -52,7 +54,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"emails\": \"shashank004@gmail.com\",\n\t\"friend\": {\n\t\t\"name\": \"Ben\",\n\t\t\"fullName\": \"Benjamin Libor\",\n\t\t\"tagline\": \"Spreadshare founder\",\n\t\t\"imageLink\": \"https://ca.slack-edge.com/T7S34FEUD-U7RUFNSD8-223ce264a05a-72\",\n\t\t\"followLink\": \"https://google.com\"\n\t}\n}"
+					"raw": "{\n\t\"emails\": \"shashank004@gmail.com\",\n\t\"person\": {\n\t\t\"name\": \"Ben\",\n\t\t\"fullName\": \"Benjamin Libor\",\n\t\t\"tagline\": \"Spreadshare founder\",\n\t\t\"imageLink\": \"https://ca.slack-edge.com/T7S34FEUD-U7RUFNSD8-223ce264a05a-72\",\n\t\t\"followLink\": \"https://google.com\"\n\t}\n}"
 				},
 				"url": {
 					"raw": "{{spreadshare-emails}}/email/friend-joined",
@@ -68,6 +70,7 @@
 			"response": []
 		},
 		{
+			"_postman_id": "61cd0f1c-ed0e-477c-9cb9-9ee48eef4c7e",
 			"name": "New Comment",
 			"request": {
 				"method": "POST",
@@ -93,6 +96,102 @@
 					"path": [
 						"email",
 						"new-comment"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"_postman_id": "5f98985d-bf20-446f-9887-d5d3b69fdb0f",
+			"name": "Welcome Email",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "x-api-key",
+						"value": "{{spreadshare-emails-api-key}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"email\": \"shashank004@gmail.com\",\n\t\"name\": \"Shashank Tomar\"\n}"
+				},
+				"url": {
+					"raw": "{{spreadshare-emails}}/email/welcome",
+					"host": [
+						"{{spreadshare-emails}}"
+					],
+					"path": [
+						"email",
+						"welcome"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"_postman_id": "f85412ad-ff79-41a3-bbc3-b16ec9f69f02",
+			"name": "New Follower",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "x-api-key",
+						"value": "{{spreadshare-emails-api-key}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"emails\": \"shashank004@gmail.com\",\n\t\"person\": {\n\t\t\"name\": \"Ben\",\n\t\t\"fullName\": \"Benjamin Libor\",\n\t\t\"tagline\": \"Spreadshare founder\",\n\t\t\"imageLink\": \"https://ca.slack-edge.com/T7S34FEUD-U7RUFNSD8-223ce264a05a-72\",\n\t\t\"followLink\": \"https://google.com\"\n\t}\n}"
+				},
+				"url": {
+					"raw": "{{spreadshare-emails}}/email/new-follower",
+					"host": [
+						"{{spreadshare-emails}}"
+					],
+					"path": [
+						"email",
+						"new-follower"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"_postman_id": "ca3069a5-4340-48ef-ac94-19e9cf4983dc",
+			"name": "New Subscriber",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "x-api-key",
+						"value": "{{spreadshare-emails-api-key}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"emails\": \"shashank004@gmail.com\",\n\t\"subscription\": {\n\t\t\"subscriber\": {\n\t\t\t\"name\": \"Ben\",\n\t\t\t\"fullName\": \"Benjamin Libor\",\n\t\t\t\"tagline\": \"Spreadshare founder\",\n\t\t\t\"imageLink\": \"https://ca.slack-edge.com/T7S34FEUD-U7RUFNSD8-223ce264a05a-72\",\n\t\t\t\"followLink\": \"https://google.com\"\n\t\t},\n\t\t\"stream\": {\n\t\t\t\"name\": \"Design Tools\",\n\t\t\t\"link\": \"https://google.com\"\n\t\t}\t\n\t}\n\t\n}"
+				},
+				"url": {
+					"raw": "{{spreadshare-emails}}/email/new-subscriber",
+					"host": [
+						"{{spreadshare-emails}}"
+					],
+					"path": [
+						"email",
+						"new-subscriber"
 					]
 				}
 			},

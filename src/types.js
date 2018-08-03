@@ -17,6 +17,14 @@ export interface SpreadshareMailerI {
     follower: UserProfile
   ): Promise<void>;
 
+  sendNewSubscriberEmail(
+    email: string | Array<string>,
+    subscription: {
+      subscriber: UserProfile,
+      stream: Stream
+    }
+  ): Promise<void>;
+
   sendCommentEmail(
     email: string | Array<string>,
     commentInfo: CommentInfo
@@ -109,6 +117,16 @@ export type UserProfileEmailEvent = {
   body: {
     emails: Array<string> | string,
     person: UserProfile
+  }
+};
+
+export type NewSubscriberEmailEvent = {
+  body: {
+    emails: Array<string> | string,
+    subscription: {
+      subscriber: UserProfile,
+      stream: Stream
+    }
   }
 };
 

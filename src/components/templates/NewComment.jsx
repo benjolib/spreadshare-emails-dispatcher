@@ -1,44 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Envelope from '../molecules/Envelope';
-import Header from '../molecules/Header';
-import UserBox from '../molecules/UserBox';
-import style from '../../style';
+import UserProfileWithStreamComponent from './UserProfileWithStreamComponent';
 
 function NewComment({ person, stream, replyLink, comment }) {
-  const subTitle = `${person.name} added a comment to your Stream`;
-  const previewText = `${person.name} added a comment to your Stream ${
-    stream.name
-  }`;
-  const userBoxProps = {
-    name: person.fullName,
-    imageLink: person.imageLink,
-    linkText: 'Reply',
-    link: replyLink,
-    detail: comment
+  const props = {
+    title: 'New Comment',
+    subTitle: `${person.name} added a comment to your Stream`,
+    previewText: `${person.name} added a comment to your Stream ${stream.name}`,
+    person,
+    stream,
+    personLink: replyLink,
+    personLinkType: 'Reply',
+    personDescription: comment
   };
-
-  const anchorStyle = {
-    ...style.aSimple,
-    fontWeight: style.fontWeights.thin
-  };
-
-  return (
-    <Envelope previewText={previewText}>
-      <Header title="New Comment">
-        <mj-text mj-class="sub-title">
-          {subTitle}
-          &nbsp;
-          <a style={anchorStyle} href={stream.link}>
-            {stream.name}
-          </a>
-        </mj-text>
-      </Header>
-      <mj-section padding-top="0px">
-        <UserBox {...userBoxProps} />
-      </mj-section>
-    </Envelope>
-  );
+  return <UserProfileWithStreamComponent {...props} />;
 }
 
 NewComment.propTypes = {

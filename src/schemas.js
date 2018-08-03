@@ -163,6 +163,78 @@ export const commentSchema = {
   }
 };
 
+export const subscriberSchema = {
+  type: 'object',
+  required: ['body'],
+  properties: {
+    body: {
+      type: 'object',
+      required: ['emails', 'subscription'],
+      properties: {
+        emails: {
+          anyOf: [
+            {
+              type: 'array',
+              items: {
+                type: 'string',
+                format: 'email'
+              },
+              uniqueItems: true,
+              minItems: 1
+            },
+            {
+              type: 'string',
+              format: 'email'
+            }
+          ]
+        },
+        subscription: {
+          type: 'object',
+          required: ['subscriber', 'stream'],
+          properties: {
+            subscriber: {
+              type: 'object',
+              required: ['name', 'fullName', 'tagline', 'followLink'],
+              properties: {
+                name: {
+                  type: 'string'
+                },
+                fullName: {
+                  type: 'string'
+                },
+                tagline: {
+                  type: 'string'
+                },
+                imageLink: {
+                  type: 'string',
+                  format: 'url'
+                },
+                followLink: {
+                  type: 'string',
+                  format: 'url'
+                }
+              }
+            },
+            stream: {
+              type: 'object',
+              required: ['name', 'link'],
+              properties: {
+                name: {
+                  type: 'string'
+                },
+                link: {
+                  type: 'string',
+                  format: 'url'
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+};
+
 export const digestSchema = {
   type: 'object',
   required: ['context', 'body'],

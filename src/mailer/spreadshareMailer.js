@@ -7,7 +7,8 @@ import type {
   MailerI,
   UserProfile,
   CommentInfo,
-  Digest
+  Digest,
+  Stream
 } from '../types';
 
 const welcomeEmailText = (name: string) => `Hi ${name},
@@ -53,6 +54,22 @@ export default class SpreadshareMailer implements SpreadshareMailerI {
     const content = {
       ...envelope,
       html: await getLetter('newFollower', follower)
+    };
+
+    return this.mailer.sendMail(content);
+  }
+
+  async sendNewSubscriberEmail(
+    email: string | Array<string>,
+    subscription: {
+      subscriber: UserProfile,
+      stream: Stream
+    }
+  ): Promise<void> {
+    const envelope = envelopes.NewSubscriber(email, subscription);
+    const content = {
+      ...envelope,
+      html: await getLetter('newSubscriber', subscription)
     };
 
     return this.mailer.sendMail(content);
