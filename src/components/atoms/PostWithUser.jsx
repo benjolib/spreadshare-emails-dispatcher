@@ -21,7 +21,7 @@ function PostWithUser(props) {
   return (
     <mj-section padding-top="0px" padding-bottom="16px">
       <mj-column>
-        <mj-group width="80%">
+        <mj-group width="100%">
           <mj-column mj-class="column-left">
             <mj-image
               padding-bottom="8px"

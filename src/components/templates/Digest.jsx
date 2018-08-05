@@ -33,7 +33,7 @@ function Digest(props) {
       <Header title={title}>
         <mj-text mj-class="sub-title">in {name}</mj-text>
       </Header>
-      <mj-section padding-top="0px">
+      <mj-section mj-class="email-description-text">
         <mj-text mj-class="email-text">
           This is a summary of all the new listings to&nbsp;
           <a style={descriptionAnchorStyle} href={link}>

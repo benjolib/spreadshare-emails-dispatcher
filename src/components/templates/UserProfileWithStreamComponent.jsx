@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import Envelope from '../molecules/Envelope';
 import Header from '../molecules/Header';
 import UserBox from '../molecules/UserBox';
-import style from '../../style';
 
 function NewComment({
   title,
@@ -23,18 +22,13 @@ function NewComment({
     detail: personDescription
   };
 
-  const anchorStyle = {
-    ...style.aSimple,
-    fontWeight: style.fontWeights.thin
-  };
-
   return (
     <Envelope previewText={previewText}>
       <Header title={title}>
         <mj-text mj-class="sub-title">
           {subTitle}
           &nbsp;
-          <a style={anchorStyle} href={stream.link}>
+          <a className="sub-title-anchor" href={stream.link}>
             {stream.name}
           </a>
         </mj-text>

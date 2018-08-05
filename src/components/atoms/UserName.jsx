@@ -11,7 +11,8 @@ function UserName({
   linkText
 }) {
   const paddingLeft = withImage ? '4px' : '8px';
-  const anchorCss = anchorStyle === 'roboto' ? style.a : style.aSimple;
+  const anchorClass =
+    anchorStyle === 'roboto' ? 'anchor-roboto' : 'anchor-fix-width';
 
   return (
     <mj-text mj-class="user-name" padding-left={paddingLeft}>
@@ -26,7 +27,7 @@ function UserName({
         {middleText}
       </span>
       &nbsp;
-      <a style={anchorCss} href={link}>
+      <a className={anchorClass} href={link}>
         {linkText}
       </a>
     </mj-text>

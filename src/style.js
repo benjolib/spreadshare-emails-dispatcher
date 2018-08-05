@@ -1,3 +1,13 @@
+const anchorCommon = {
+  color: '#2DaD6B',
+  fontFamily:
+    '"Lato", "Lucida Grande", "Lucida Sans Unicode", Tahoma, Sans-Serif',
+  fontWeight: 'normal',
+  textAlign: 'left',
+  lineHeight: 1.3,
+  textDecoration: 'none'
+};
+
 module.exports = {
   fontFamily: 'Lato',
 
@@ -47,35 +57,13 @@ module.exports = {
   },
 
   a: {
-    color: '#2DaD6B',
+    ...anchorCommon,
     fontFamily:
-      '"Roboto Mono", "monospace", "Lucida Grande", "Lucida Sans Unicode", Tahoma, Sans-Serif',
-    fontWeight: 'normal',
-    textAlign: 'left',
-    lineHeight: 1.3,
-    textDecoration: 'none'
+      '"Roboto Mono", "monospace", "Lucida Grande", "Lucida Sans Unicode", Tahoma, Sans-Serif'
   },
 
   aSimple: {
-    color: '#2DaD6B',
-    fontFamily:
-      '"Lato", "monospace", "Lucida Grande", "Lucida Sans Unicode", Tahoma, Sans-Serif',
-    fontWeight: 'normal',
-    textAlign: 'left',
-    lineHeight: 1.3,
-    textDecoration: 'none'
-  },
-
-  anchorSubTitle: {
-    color: '#2DaD6B',
-    fontFamily:
-      '"Lato", "Lucida Grande", "Lucida Sans Unicode", Tahoma, Sans-Serif',
-    fontWeight: '200px',
-    textAlign: 'left',
-    lineHeight: '24px',
-    letterSpacing: '-0.5px',
-    fontSize: '24px',
-    textDecoration: 'none'
+    ...anchorCommon
   },
 
   userBox: {

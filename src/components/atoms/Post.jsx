@@ -2,19 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import style from '../../style';
 
-const rowStyle = {
-  boxShadow: '0 1px 2px 0 rgba(0, 0, 0, 0.18)',
-  WebkitBoxShadow: '0 1px 2px 0 rgba(0, 0, 0, 0.18)',
-  MozBoxShadow: '0 1px 2px 0 rgba(0, 0, 0, 0.18)',
-  border: '1px solid #f4f4f4',
-  borderRadius: '4px',
-  width: '100%',
-  maxWidth: '400px',
-  overflowX: 'auto',
-  borderCollapse: 'collapse',
-  borderSpacing: '0 !important'
-};
-
 const rowItemStyle = {
   padding: '8px 16px 8px 0',
   color: '#2a1e3e',
@@ -28,7 +15,8 @@ const rowItemStyle = {
   lineHeight: '1.33',
   letterSpacing: '-.4px',
   borderCollapse: 'collapse',
-  borderSpacing: '0 !important'
+  borderSpacing: '0 !important',
+  overflow: 'hidden'
 };
 
 const votesStyle = {
@@ -58,8 +46,8 @@ function Post({ imageLink, votesCount, columns }) {
   const imagePresent = imageLink !== null && imageLink !== undefined;
 
   return (
-    <mj-table>
-      <tr style={rowStyle}>
+    <mj-table >
+      <tr className="post-row">
         <td style={votesStyle}>
           <img
             style={{ width: '14px' }}

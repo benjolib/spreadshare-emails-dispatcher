@@ -4,6 +4,72 @@ import style from '../../style';
 import Footer from './Footer';
 
 function Envelope({ previewText, children }) {
+  const mediaQueries = `
+    
+    /* Custom, iPhone Retina */ 
+    @media only screen and (min-width: 320px) {
+      .anchor-fix-width {
+        width: 72px !important;
+      }
+    }
+    
+    /* Custom, iPhone Retina */ 
+    @media only screen and (min-width: 380px) {
+      .anchor-fix-width {
+        width: 150px !important;
+      }
+    }
+    
+    /* Extra Small Devices, Phones */ 
+    @media only screen and (min-width : 480px) {
+      .anchor-fix-width {
+        width: 350px !important;
+      }
+    }
+
+    /* Small Devices, Tablets */
+    @media only screen and (min-width : 768px) {
+      .anchor-fix-width {
+        width: 350px !important;
+      }
+    }
+  `;
+  const inlineStyle = `
+    a {
+      color: #2DaD6B;
+      font-weight: normal;
+      text-align: left;
+      line-height: 1.3;
+      text-decoration: none;
+    }
+    
+    .anchor-fix-width {
+      width: 300px;
+      display: inline-block;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      vertical-align: text-bottom;
+    }
+    
+    .sub-title-anchor {
+      font-weight: 200px;
+      line-height: 24px;
+      letter-spacing: -0.5px;
+      font-size: 24px;
+      font-weight: 200;
+    }
+    
+    .post-row {
+      width: 100%;
+      max-width: 630px;
+      box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.18);
+      border: 1px solid #f8f8fb;
+      border-radius: 4px;
+      overflow-x: auto;
+      clear: both;
+    }
+  `;
   return (
     <mjml version="4.1.1">
       <mj-head>
@@ -12,6 +78,8 @@ function Envelope({ previewText, children }) {
           href="https://fonts.googleapis.com/css?family=Lato|Roboto+Mono"
         />
         <mj-preview>{previewText}</mj-preview>
+        <mj-style inline="inline">{inlineStyle}</mj-style>
+        <mj-style>{mediaQueries}</mj-style>
         <mj-attributes>
           <mj-section
             background-color={style.colors.contentBackground}
@@ -47,6 +115,13 @@ function Envelope({ previewText, children }) {
             font-size={style.textSizes.subTitle}
             font-weight={style.fontWeights.thin}
             color={style.colors.lightText}
+          />
+
+          <mj-class
+            name="email-description-text"
+            padding-top="0px"
+            padding-left="24px"
+            padding-right="24px"
           />
 
           <mj-class
