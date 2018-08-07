@@ -15,8 +15,13 @@ const rowItemStyle = {
   lineHeight: '1.33',
   letterSpacing: '-.4px',
   borderCollapse: 'collapse',
-  borderSpacing: '0 !important',
-  overflow: 'hidden'
+  borderSpacing: '0 !important'
+};
+
+const fixWidthRow = {
+  ...rowItemStyle,
+  overflow: 'hidden',
+  minWidth: '100px'
 };
 
 const votesStyle = {
@@ -46,7 +51,7 @@ function Post({ imageLink, votesCount, columns }) {
   const imagePresent = imageLink !== null && imageLink !== undefined;
 
   return (
-    <mj-table >
+    <mj-table table-layout="fixed">
       <tr className="post-row">
         <td style={votesStyle}>
           <img
@@ -72,14 +77,14 @@ function Post({ imageLink, votesCount, columns }) {
         {columns.map(c => {
           if (c.link) {
             return (
-              <td style={rowItemStyle}>
+              <td style={fixWidthRow}>
                 <a style={anchorStyle} href={c.link}>
                   {c.text}
                 </a>
               </td>
             );
           }
-          return <td style={rowItemStyle}>{c.text}</td>;
+          return <td style={fixWidthRow}>{c.text}</td>;
         })}
       </tr>
     </mj-table>

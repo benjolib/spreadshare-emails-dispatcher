@@ -10,12 +10,12 @@ function StreamList({ name, link, digest }) {
 
   return (
     <mj-section padding-top="0px">
-      {digest.map(d => {
+      {digest.map((d, i) => {
         const childProps = {
           ...d,
           stream
         };
-        return <PostWithUser {...childProps} />;
+        return <PostWithUser {...childProps} key={i} />;
       })}
     </mj-section>
   );

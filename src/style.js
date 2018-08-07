@@ -28,7 +28,8 @@ module.exports = {
 
   sizes: {
     avatar: '64px',
-    avatarSmall: '28px'
+    avatarSmall: '28px',
+    vote: '24px'
   },
 
   textSizes: {

@@ -69,6 +69,12 @@ function Envelope({ previewText, children }) {
       overflow-x: auto;
       clear: both;
     }
+    
+    .post-image {
+      width: 200px;
+      min-height: 100%;
+      min-width: 100%;
+    }
   `;
   return (
     <mjml version="4.1.1">
@@ -167,6 +173,22 @@ function Envelope({ previewText, children }) {
             padding-right="8px"
             width={style.sizes.avatarSmall}
             border-radius="9999px"
+          />
+
+          <mj-class
+            name="table-row"
+            border="1px solid #e8e8e8"
+            border-radius="4px"
+            padding-top="0px"
+            padding-bottom="0px"
+          />
+
+          <mj-class
+            name="vote"
+            align="left"
+            padding-right="8px"
+            vertical-align="middle"
+            width={style.sizes.vote}
           />
         </mj-attributes>
       </mj-head>
