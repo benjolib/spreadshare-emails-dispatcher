@@ -1,97 +1,42 @@
+import R from 'ramda';
 import React from 'react';
 import PropTypes from 'prop-types';
-import style from '../../style';
+import PostFirstRow from './PostFirstRow';
+import PostRow from './PostRow';
 
-const rowItemStyle = {
-  padding: '8px 16px 8px 0',
-  color: '#2a1e3e',
-  fontSize: '14px',
-  height: '72px',
-  verticalAlign: 'medium',
-  fontFamily: 'Lato',
-  fontWeight: '400',
-  fontStyle: 'normal',
-  fontStretch: 'normal',
-  lineHeight: '1.33',
-  letterSpacing: '-.4px',
-  borderCollapse: 'collapse',
-  borderSpacing: '0 !important'
+const otherRows = (columns, firstRowCount, rowCount) => {
+  const remainingItems = R.drop(firstRowCount, columns);
+  const groupBy = R.addIndex(R.groupBy);
+  return R.values(groupBy((_, i) => Math.floor(i / rowCount), remainingItems));
 };
 
-const fixWidthRow = {
-  ...rowItemStyle,
-  overflow: 'hidden',
-  minWidth: '100px'
-};
-
-const votesStyle = {
-  verticalAlign: 'middle',
-  padding: '8px 16px 8px 0',
-  paddingLeft: '12px',
-  borderCollapse: 'collapse',
-  borderSpacing: '0 !important'
-};
-
-const anchorStyle = {
-  border: '1px solid #2dad6b',
-  borderRadius: '2px',
-  padding: '4px 6px',
-  color: '#2dad6b',
-  textDecoration: 'none'
-};
-
-function Post({ imageLink, votesCount, columns }) {
-  const imageRowStyle = {
-    background: `#f5f5f5 url(${imageLink}) center / cover`,
-    width: '82px',
-    height: '82px',
-    borderRadius: '10px'
+function Post(props) {
+  const { columns, itemsInFirstRow, maxItemInARow } = props;
+  if (columns.length === 0) {
+    throw new Error('At least one column value expected');
+  }
+  const firstRowItemCount = Math.min(itemsInFirstRow, columns.length);
+  const firstRow = columns.slice(0, firstRowItemCount);
+  const firstRowProps = {
+    ...props,
+    columns: firstRow
   };
 
-  const imagePresent = imageLink !== null && imageLink !== undefined;
-
   return (
-    <mj-table table-layout="fixed">
-      <tr className="post-row">
-        <td style={votesStyle}>
-          <img
-            style={{ width: '14px' }}
-            src="https://s3.eu-central-1.amazonaws.com/spreadshare-public-assets/vote-lightning-34x42.png"
-            alt="Votes"
-          />
-          <div
-            style={{
-              color: style.colors.lightText
-            }}
-          >
-            {votesCount}
-          </div>
-        </td>
-        {imagePresent && (
-          <td style={rowItemStyle}>
-            <div style={imageRowStyle}>
-              <img alt="" data-name="Post" />
-            </div>
-          </td>
-        )}
-        {columns.map(c => {
-          if (c.link) {
-            return (
-              <td style={fixWidthRow}>
-                <a style={anchorStyle} href={c.link}>
-                  {c.text}
-                </a>
-              </td>
-            );
-          }
-          return <td style={fixWidthRow}>{c.text}</td>;
-        })}
-      </tr>
-    </mj-table>
+    <mj-wrapper padding="0px 12px">
+      <mj-section mj-class="table-row">
+        <PostFirstRow {...firstRowProps} />
+        {otherRows(columns, itemsInFirstRow, maxItemInARow).map((c, i) => (
+          <PostRow columns={c} key={i} />
+        ))}
+      </mj-section>
+    </mj-wrapper>
   );
 }
 
 Post.propTypes = {
+  itemsInFirstRow: PropTypes.number,
+  maxItemInARow: PropTypes.number,
   votesCount: PropTypes.number.isRequired,
   imageLink: PropTypes.string,
   columns: PropTypes.arrayOf(
@@ -100,6 +45,11 @@ Post.propTypes = {
       link: PropTypes.string
     })
   ).isRequired
+};
+
+Post.defaultProps = {
+  itemsInFirstRow: 3,
+  maxItemInARow: 4
 };
 
 export default Post;

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import PostNew from './PostNew';
+import Post from './Post';
 import UserName from './UserName';
 
 function PostWithUser(props) {
@@ -19,7 +19,7 @@ function PostWithUser(props) {
   };
 
   return (
-    <mj-section padding-top="0px" padding-bottom="16px">
+    <mj-section padding-top="0px" padding-bottom="24px">
       <mj-column>
         <mj-group width="100%">
           <mj-column mj-class="column-left">
@@ -34,7 +34,7 @@ function PostWithUser(props) {
             <UserName {...userNameProps} />
           </mj-column>
         </mj-group>
-        <PostNew {...props} />
+        <Post {...props} />
       </mj-column>
     </mj-section>
   );

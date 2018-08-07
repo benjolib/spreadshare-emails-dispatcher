@@ -290,7 +290,6 @@ export const digestSchema = {
                   'columns',
                   'votesCount',
                   'commentsCount',
-                  'imageLink',
                   'contributor'
                 ],
                 properties: {

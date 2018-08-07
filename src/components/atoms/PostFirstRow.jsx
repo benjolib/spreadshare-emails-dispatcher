@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import randomMc from 'random-material-color';
 import style from '../../style';
 import Column from './Column';
 
@@ -8,12 +9,34 @@ function PostFirstRow({ imageLink, votesCount, columns }) {
     background: `#f5f5f5 url(${imageLink}) center / cover`,
     width: '82px',
     height: '82px',
-    borderRadius: '10px'
+    borderRadius: '10px',
+    textAlign: 'center',
+    verticalAlign: 'middle',
+    lineHeight: '80px',
+    fontSize: '40px',
+    fontFamily:
+      '"Roboto Mono", "monospace", "Lucida Grande", "Lucida Sans Unicode", Tahoma, Sans-Serif',
+    fontStyle: 'normal',
+    fontWeight: 300,
+    color: '#ffffff'
   };
 
   const columnPercentage = 70 / columns.length;
   const columnWidth = `${columnPercentage}%`;
   const [firstItem, secondItem, thirdItem] = columns;
+
+  if (!imageLink) {
+    imageRowStyle.background = randomMc.getColor({
+      text: firstItem.text.charAt(0)
+    });
+  }
+
+  const imageDivContent = () => {
+    if (imageLink) {
+      return <img alt="" data-name="Post" />;
+    }
+    return firstItem.text.charAt(0);
+  };
 
   return (
     <mj-section padding-top="8px" padding-bottom="8px">
@@ -42,9 +65,7 @@ function PostFirstRow({ imageLink, votesCount, columns }) {
         </mj-column>
         <mj-column padding="0px" width="20%" vertical-align="middle">
           <mj-raw>
-            <div style={imageRowStyle}>
-              <img alt="" data-name="Post" />
-            </div>
+            <div style={imageRowStyle}>{imageDivContent()}</div>
           </mj-raw>
         </mj-column>
         <Column item={firstItem} columnWidth={columnWidth} />

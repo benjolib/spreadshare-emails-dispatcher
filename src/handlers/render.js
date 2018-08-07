@@ -133,14 +133,13 @@ const data = {
       },
       {
         votesCount: 3,
-        imageLink: 'https://spreadshare.co/rowimages/26344.png',
         contributor: {
           name: 'Benjamin',
           fullName: 'Benjamin Libor'
         },
         columns: [
           {
-            text: 'Werner Vogels'
+            text: 'Kerner Vogels'
           },
           {
             text: 'CTO'
