@@ -11,6 +11,13 @@ function Envelope({ previewText, children }) {
       .anchor-fix-width {
         width: 72px !important;
       }
+      .column-length-two {
+        display: block;
+      }
+      
+      .column-length-three {
+        display: none;
+      }
     }
     
     /* Custom, iPhone Retina */ 
@@ -31,6 +38,14 @@ function Envelope({ previewText, children }) {
     @media only screen and (min-width : 768px) {
       .anchor-fix-width {
         width: 350px !important;
+      }
+      
+      .column-length-two {
+        display: none;
+      }
+      
+      .column-length-three {
+        display: block;
       }
     }
   `;
@@ -74,6 +89,14 @@ function Envelope({ previewText, children }) {
       width: 200px;
       min-height: 100%;
       min-width: 100%;
+    }
+    
+    .boxed-anchor {
+      border: 1px solid #2dad6b;
+      border-radius: 2px;
+      padding: 4px 6px;
+      color: #2dad6b;
+      text-decoration: none;
     }
   `;
   return (

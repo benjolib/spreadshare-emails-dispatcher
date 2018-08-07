@@ -77,5 +77,21 @@ module.exports = {
   userName: {
     color: '#2a1e3e',
     fontWeight: '600'
+  },
+
+  imageRowStyle: {
+    background: '#f5f5f5',
+    width: '82px',
+    height: '82px',
+    borderRadius: '10px',
+    textAlign: 'center',
+    verticalAlign: 'middle',
+    lineHeight: '80px',
+    fontSize: '40px',
+    fontFamily:
+      '"Roboto Mono", "monospace", "Lucida Grande", "Lucida Sans Unicode", Tahoma, Sans-Serif',
+    fontStyle: 'normal',
+    fontWeight: 300,
+    color: '#ffffff'
   }
 };

@@ -11,7 +11,7 @@ const otherRows = (columns, firstRowCount, rowCount) => {
 };
 
 function Post(props) {
-  const { columns, itemsInFirstRow, maxItemInARow } = props;
+  const { columns, itemsInFirstRow, maxItemInARow, className } = props;
   if (columns.length === 0) {
     throw new Error('At least one column value expected');
   }
@@ -23,11 +23,11 @@ function Post(props) {
   };
 
   return (
-    <mj-wrapper padding="0px 12px">
+    <mj-wrapper padding="0px 12px" css-class={className}>
       <mj-section mj-class="table-row">
         <PostFirstRow {...firstRowProps} />
         {otherRows(columns, itemsInFirstRow, maxItemInARow).map((c, i) => (
-          <PostRow columns={c} key={i} />
+          <PostRow columns={c} key={i} className="column-length-two" />
         ))}
       </mj-section>
     </mj-wrapper>
@@ -35,6 +35,7 @@ function Post(props) {
 }
 
 Post.propTypes = {
+  className: PropTypes.string,
   itemsInFirstRow: PropTypes.number,
   maxItemInARow: PropTypes.number,
   votesCount: PropTypes.number.isRequired,
@@ -48,8 +49,9 @@ Post.propTypes = {
 };
 
 Post.defaultProps = {
-  itemsInFirstRow: 3,
-  maxItemInARow: 4
+  className: 'column-length-three',
+  itemsInFirstRow: 2,
+  maxItemInARow: 3
 };
 
 export default Post;

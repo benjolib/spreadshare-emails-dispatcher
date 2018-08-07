@@ -34,7 +34,18 @@ function PostWithUser(props) {
             <UserName {...userNameProps} />
           </mj-column>
         </mj-group>
-        <Post {...props} />
+        <Post
+          {...props}
+          className="column-length-three"
+          itemsInFirstRow={2}
+          maxItemInARow={3}
+        />
+        <Post
+          {...props}
+          className="column-length-two"
+          itemsInFirstRow={1}
+          maxItemInARow={2}
+        />
       </mj-column>
     </mj-section>
   );

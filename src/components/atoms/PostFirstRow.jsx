@@ -5,25 +5,13 @@ import style from '../../style';
 import Column from './Column';
 
 function PostFirstRow({ imageLink, votesCount, columns }) {
-  const imageRowStyle = {
-    background: `#f5f5f5 url(${imageLink}) center / cover`,
-    width: '82px',
-    height: '82px',
-    borderRadius: '10px',
-    textAlign: 'center',
-    verticalAlign: 'middle',
-    lineHeight: '80px',
-    fontSize: '40px',
-    fontFamily:
-      '"Roboto Mono", "monospace", "Lucida Grande", "Lucida Sans Unicode", Tahoma, Sans-Serif',
-    fontStyle: 'normal',
-    fontWeight: 300,
-    color: '#ffffff'
-  };
+  const { imageRowStyle } = style;
+  imageRowStyle.background = `#f5f5f5 url(${imageLink}) center / cover`;
 
   const columnPercentage = 70 / columns.length;
   const columnWidth = `${columnPercentage}%`;
   const [firstItem, secondItem, thirdItem] = columns;
+  const linkTextWidth = columns.length < 2 ? 5 : 10;
 
   if (!imageLink) {
     imageRowStyle.background = randomMc.getColor({
@@ -68,9 +56,25 @@ function PostFirstRow({ imageLink, votesCount, columns }) {
             <div style={imageRowStyle}>{imageDivContent()}</div>
           </mj-raw>
         </mj-column>
-        <Column item={firstItem} columnWidth={columnWidth} />
-        {secondItem && <Column item={secondItem} columnWidth={columnWidth} />}
-        {thirdItem && <Column item={thirdItem} columnWidth={columnWidth} />}
+        <Column
+          item={firstItem}
+          columnWidth={columnWidth}
+          linkTextWidth={linkTextWidth}
+        />
+        {secondItem && (
+          <Column
+            item={secondItem}
+            columnWidth={columnWidth}
+            linkTextWidth={linkTextWidth}
+          />
+        )}
+        {thirdItem && (
+          <Column
+            item={thirdItem}
+            columnWidth={columnWidth}
+            linkTextWidth={linkTextWidth}
+          />
+        )}
       </mj-group>
     </mj-section>
   );
