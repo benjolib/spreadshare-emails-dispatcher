@@ -5,8 +5,6 @@ import Footer from './Footer';
 
 function Envelope({ previewText, children }) {
   const mediaQueries = `
-    
-    /* Custom, iPhone Retina */ 
     @media only screen and (min-width: 320px) {
       .anchor-fix-width {
         width: 72px !important;
@@ -20,21 +18,18 @@ function Envelope({ previewText, children }) {
       }
     }
     
-    /* Custom, iPhone Retina */ 
     @media only screen and (min-width: 380px) {
       .anchor-fix-width {
         width: 150px !important;
       }
     }
     
-    /* Extra Small Devices, Phones */ 
     @media only screen and (min-width : 480px) {
       .anchor-fix-width {
         width: 350px !important;
       }
     }
 
-    /* Small Devices, Tablets */
     @media only screen and (min-width : 768px) {
       .anchor-fix-width {
         width: 350px !important;
@@ -59,7 +54,7 @@ function Envelope({ previewText, children }) {
     }
     
     .anchor-fix-width {
-      width: 300px;
+      width: 72px !important;
       display: inline-block;
       overflow: hidden;
       white-space: nowrap;
@@ -107,8 +102,8 @@ function Envelope({ previewText, children }) {
           href="https://fonts.googleapis.com/css?family=Lato|Roboto+Mono"
         />
         <mj-preview>{previewText}</mj-preview>
+        {/*<mj-style>{mediaQueries}</mj-style>*/}
         <mj-style inline="inline">{inlineStyle}</mj-style>
-        <mj-style>{mediaQueries}</mj-style>
         <mj-attributes>
           <mj-section
             background-color={style.colors.contentBackground}
@@ -120,23 +115,13 @@ function Envelope({ previewText, children }) {
           <mj-table padding-top="0px" />
 
           <mj-class
-            name="column-auto-width"
-            width="auto"
-            vertical-align="middle"
-          />
-          <mj-class
-            name="column-left"
-            width="auto"
-            vertical-align="middle"
-            padding-left="28px"
-          />
-          <mj-class
             name="title"
             line-height={style.lineHeights.title}
             font-size={style.textSizes.title}
             font-weight={style.fontWeights.bold}
             color={style.colors.darkText}
           />
+
           <mj-class
             name="sub-title"
             letter-spacing="-0.5px"

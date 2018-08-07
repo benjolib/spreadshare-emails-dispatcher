@@ -20,9 +20,14 @@ function PostWithUser(props) {
 
   return (
     <mj-section padding-top="0px" padding-bottom="24px">
-      <mj-column>
+      <mj-section
+        padding-top="0px"
+        padding-bottom="0px"
+        padding-left="0px"
+        padding-right="0px"
+      >
         <mj-group width="100%">
-          <mj-column mj-class="column-left">
+          <mj-column width="10%" vertical-align="middle">
             <mj-image
               padding-bottom="8px"
               mj-class="avatar-small"
@@ -30,23 +35,23 @@ function PostWithUser(props) {
               src={imageLink}
             />
           </mj-column>
-          <mj-column mj-class="column-auto-width" padding-bottom="8px">
+          <mj-column width="90%" padding-bottom="8px" vertical-align="middle">
             <UserName {...userNameProps} />
           </mj-column>
         </mj-group>
-        <Post
-          {...props}
-          className="column-length-three"
-          itemsInFirstRow={2}
-          maxItemInARow={3}
-        />
-        <Post
-          {...props}
-          className="column-length-two"
-          itemsInFirstRow={1}
-          maxItemInARow={2}
-        />
-      </mj-column>
+      </mj-section>
+      <Post
+        {...props}
+        className="column-length-three"
+        itemsInFirstRow={2}
+        maxItemInARow={3}
+      />
+      {/*<Post*/}
+      {/*{...props}*/}
+      {/*className="column-length-two"*/}
+      {/*itemsInFirstRow={1}*/}
+      {/*maxItemInARow={2}*/}
+      {/*/>*/}
     </mj-section>
   );
 }

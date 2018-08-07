@@ -22,12 +22,6 @@ function Digest(props) {
 
   const title = `${frequencyPrefixMap[frequency]}`;
   const previewText = `${title} in ${name}`;
-
-  const descriptionAnchorStyle = {
-    ...style.aSimple,
-    fontWeight: style.fontWeights.default
-  };
-
   return (
     <Envelope previewText={previewText}>
       <Header title={title}>
@@ -36,9 +30,7 @@ function Digest(props) {
       <mj-section mj-class="email-description-text">
         <mj-text mj-class="email-text">
           This is a summary of all the new listings to&nbsp;
-          <a style={descriptionAnchorStyle} href={link}>
-            {name}
-          </a>
+          <a href={link}>{name}</a>
           &nbsp;from&nbsp;
           {frequencySuffixMap[frequency]}
         </mj-text>

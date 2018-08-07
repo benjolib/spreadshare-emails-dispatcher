@@ -57,14 +57,17 @@ module.exports = {
     subTitle: '28px'
   },
 
-  a: {
-    ...anchorCommon,
-    fontFamily:
-      '"Roboto Mono", "monospace", "Lucida Grande", "Lucida Sans Unicode", Tahoma, Sans-Serif'
-  },
-
   aSimple: {
     ...anchorCommon
+  },
+
+  aFixedWidth: {
+    width: '200px',
+    display: 'inline-block',
+    overflow: 'hidden',
+    whiteSpace: 'nowrap',
+    textOverflow: 'ellipsis',
+    verticalAlign: 'text-bottom'
   },
 
   userBox: {

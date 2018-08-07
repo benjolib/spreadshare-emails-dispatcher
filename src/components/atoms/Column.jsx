@@ -11,7 +11,12 @@ const truncatedText = (text, maxTextLength) => {
 function Column({ item, columnWidth, linkTextWidth }) {
   if (item.link) {
     return (
-      <mj-column width={columnWidth} vertical-align="middle">
+      <mj-column
+        width={columnWidth}
+        vertical-align="middle"
+        padding-left="8px"
+        padding-right="8px"
+      >
         <mj-text align="center">
           <a className="boxed-anchor" href={item.link}>
             {truncatedText(item.text, linkTextWidth)}
@@ -21,7 +26,12 @@ function Column({ item, columnWidth, linkTextWidth }) {
     );
   }
   return (
-    <mj-column width={columnWidth} vertical-align="middle">
+    <mj-column
+      width={columnWidth}
+      vertical-align="middle"
+      padding-left="8px"
+      padding-right="8px"
+    >
       <mj-text align="center">{truncatedText(item.text, 50)}</mj-text>
     </mj-column>
   );

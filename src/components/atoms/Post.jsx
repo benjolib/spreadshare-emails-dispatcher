@@ -23,7 +23,7 @@ function Post(props) {
   };
 
   return (
-    <mj-wrapper padding="0px 12px" css-class={className}>
+    <mj-wrapper padding="0px 24px" css-class={className}>
       <mj-section mj-class="table-row">
         <PostFirstRow {...firstRowProps} />
         {otherRows(columns, itemsInFirstRow, maxItemInARow).map((c, i) => (
