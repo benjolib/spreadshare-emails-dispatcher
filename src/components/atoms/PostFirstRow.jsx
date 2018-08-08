@@ -8,10 +8,9 @@ function PostFirstRow({ imageLink, votesCount, columns }) {
   const { imageRowStyle } = style;
   imageRowStyle.background = `#f5f5f5 url(${imageLink}) center / cover`;
 
-  const columnPercentage = 70 / columns.length;
+  const columnPercentage = 65 / columns.length;
   const columnWidth = `${columnPercentage}%`;
   const [firstItem, secondItem, thirdItem] = columns;
-  const linkTextWidth = columns.length < 2 ? 5 : 10;
 
   if (!imageLink) {
     imageRowStyle.background = randomMc.getColor({
@@ -32,12 +31,12 @@ function PostFirstRow({ imageLink, votesCount, columns }) {
         <mj-column
           padding-left="14px"
           padding-right="14px"
-          width="10%"
+          width="15%"
           vertical-align="middle"
         >
           <mj-image
             mj-class="vote"
-            width="14px"
+            width="15px"
             src="https://s3.eu-central-1.amazonaws.com/spreadshare-public-assets/vote-lightning-34x42.png"
             alt="Votes"
             padding="0px"
@@ -56,25 +55,9 @@ function PostFirstRow({ imageLink, votesCount, columns }) {
             <div style={imageRowStyle}>{imageDivContent()}</div>
           </mj-raw>
         </mj-column>
-        <Column
-          item={firstItem}
-          columnWidth={columnWidth}
-          linkTextWidth={linkTextWidth}
-        />
-        {secondItem && (
-          <Column
-            item={secondItem}
-            columnWidth={columnWidth}
-            linkTextWidth={linkTextWidth}
-          />
-        )}
-        {thirdItem && (
-          <Column
-            item={thirdItem}
-            columnWidth={columnWidth}
-            linkTextWidth={linkTextWidth}
-          />
-        )}
+        <Column item={firstItem} columnWidth={columnWidth} />
+        {secondItem && <Column item={secondItem} columnWidth={columnWidth} />}
+        {thirdItem && <Column item={thirdItem} columnWidth={columnWidth} />}
       </mj-group>
     </mj-section>
   );

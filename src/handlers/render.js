@@ -53,7 +53,7 @@ const data = {
   digest: {
     frequency: 'monthly',
     name:
-      'Design Tools gsa lalsfj ljslgja ljglas  glasjgla s lgasgj dfafdas safasdf safasdf sfaf dafda fdasdf a adfasdf dfsafad asdfa sfa',
+      'Design Tools',
     link: 'https://google.com',
     digest: [
       {

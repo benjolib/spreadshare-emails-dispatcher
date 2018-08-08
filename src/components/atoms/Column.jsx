@@ -17,7 +17,7 @@ function Column({ item, columnWidth, linkTextWidth }) {
         padding-left="8px"
         padding-right="8px"
       >
-        <mj-text align="center">
+        <mj-text align="center" padding-left="0px" padding-right="0px">
           <a className="boxed-anchor" href={item.link}>
             {truncatedText(item.text, linkTextWidth)}
           </a>
@@ -32,7 +32,9 @@ function Column({ item, columnWidth, linkTextWidth }) {
       padding-left="8px"
       padding-right="8px"
     >
-      <mj-text align="center">{truncatedText(item.text, 50)}</mj-text>
+      <mj-text padding-left="0px" padding-right="0px" align="center">
+        {truncatedText(item.text, 50)}
+      </mj-text>
     </mj-column>
   );
 }
@@ -47,7 +49,7 @@ Column.propTypes = {
 };
 
 Column.defaultProps = {
-  linkTextWidth: 10
+  linkTextWidth: 15
 };
 
 export default Column;

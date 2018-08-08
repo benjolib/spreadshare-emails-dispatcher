@@ -27,31 +27,26 @@ function PostWithUser(props) {
         padding-right="0px"
       >
         <mj-group width="100%">
-          <mj-column width="10%" vertical-align="middle">
+          <mj-column width="15%" vertical-align="middle">
             <mj-image
+              align="left"
               padding-bottom="8px"
               mj-class="avatar-small"
-              padding-left="0px"
+              width="28px"
               src={imageLink}
             />
           </mj-column>
-          <mj-column width="90%" padding-bottom="8px" vertical-align="middle">
+          <mj-column
+            width="70%"
+            padding-bottom="8px"
+            vertical-align="middle"
+            padding-left="0px"
+          >
             <UserName {...userNameProps} />
           </mj-column>
         </mj-group>
       </mj-section>
-      <Post
-        {...props}
-        className="column-length-three"
-        itemsInFirstRow={2}
-        maxItemInARow={3}
-      />
-      {/*<Post*/}
-      {/*{...props}*/}
-      {/*className="column-length-two"*/}
-      {/*itemsInFirstRow={1}*/}
-      {/*maxItemInARow={2}*/}
-      {/*/>*/}
+      <Post {...props} itemsInFirstRow={1} maxItemInARow={2} />
     </mj-section>
   );
 }

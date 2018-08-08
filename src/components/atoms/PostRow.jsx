@@ -5,7 +5,6 @@ import Column from './Column';
 function PostRow({ columns }) {
   const columnPercentage = 100 / columns.length;
   const columnWidth = `${columnPercentage}%`;
-  const linkTextWidth = columns.length < 3 ? 5 : 10;
 
   return (
     <mj-section
@@ -18,12 +17,7 @@ function PostRow({ columns }) {
       <mj-section padding-top="8px" padding-bottom="8px">
         <mj-group>
           {columns.map((item, i) => (
-            <Column
-              item={item}
-              columnWidth={columnWidth}
-              key={i}
-              linkTextWidth={linkTextWidth}
-            />
+            <Column item={item} columnWidth={columnWidth} key={i} />
           ))}
         </mj-group>
       </mj-section>

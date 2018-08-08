@@ -4,46 +4,6 @@ import style from '../../style';
 import Footer from './Footer';
 
 function Envelope({ previewText, children }) {
-  const mediaQueries = `
-    @media only screen and (min-width: 320px) {
-      .anchor-fix-width {
-        width: 72px !important;
-      }
-      .column-length-two {
-        display: block;
-      }
-      
-      .column-length-three {
-        display: none;
-      }
-    }
-    
-    @media only screen and (min-width: 380px) {
-      .anchor-fix-width {
-        width: 150px !important;
-      }
-    }
-    
-    @media only screen and (min-width : 480px) {
-      .anchor-fix-width {
-        width: 350px !important;
-      }
-    }
-
-    @media only screen and (min-width : 768px) {
-      .anchor-fix-width {
-        width: 350px !important;
-      }
-      
-      .column-length-two {
-        display: none;
-      }
-      
-      .column-length-three {
-        display: block;
-      }
-    }
-  `;
   const inlineStyle = `
     a {
       color: #2DaD6B;
@@ -54,7 +14,7 @@ function Envelope({ previewText, children }) {
     }
     
     .anchor-fix-width {
-      width: 72px !important;
+      width: 100px !important;
       display: inline-block;
       overflow: hidden;
       white-space: nowrap;
@@ -102,7 +62,6 @@ function Envelope({ previewText, children }) {
           href="https://fonts.googleapis.com/css?family=Lato|Roboto+Mono"
         />
         <mj-preview>{previewText}</mj-preview>
-        {/*<mj-style>{mediaQueries}</mj-style>*/}
         <mj-style inline="inline">{inlineStyle}</mj-style>
         <mj-attributes>
           <mj-section
@@ -127,7 +86,7 @@ function Envelope({ previewText, children }) {
             letter-spacing="-0.5px"
             line-height={style.lineHeights.subTitle}
             font-size={style.textSizes.subTitle}
-            font-weight={style.fontWeights.thin}
+            font-weight={style.fontWeights.light}
             color={style.colors.lightText}
           />
 
