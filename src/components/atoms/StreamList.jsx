@@ -2,21 +2,40 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import PostWithUser from './PostWithUser';
 
+const maxNoOfPost = 20;
+
 function StreamList({ name, link, digest }) {
   const stream = {
     name,
     link
   };
 
+  if (digest.length === 0) {
+    throw new Error('At least one digest value expected');
+  }
+
+  const maxDigestLength = Math.min(maxNoOfPost, digest.length);
+  const digestToShow = digest.slice(0, maxDigestLength);
+  const trimmingContent = maxDigestLength !== digest.length;
+
   return (
     <mj-section padding-top="0px">
-      {digest.map((d, i) => {
+      {digestToShow.map((d, i) => {
         const childProps = {
           ...d,
           stream
         };
         return <PostWithUser {...childProps} key={i} />;
       })}
+      {trimmingContent && (
+        <mj-section padding-top="24px" padding-bottom="0px">
+          <mj-column>
+            <mj-text font-size="18px">
+              <a href={link}>See More Posts...</a>
+            </mj-text>
+          </mj-column>
+        </mj-section>
+      )}
     </mj-section>
   );
 }
