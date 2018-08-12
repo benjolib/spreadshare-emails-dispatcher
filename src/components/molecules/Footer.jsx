@@ -2,6 +2,8 @@ import React from 'react';
 import style from '../../style';
 
 function Footer() {
+  const baseUrl = process.env.BASE_URL || 'https://spreadshare.co';
+  const emailPrefLink = `${baseUrl}/settings#emails`;
   return (
     <mj-section background-color={style.colors.footer}>
       <mj-column>
@@ -32,7 +34,7 @@ function Footer() {
           color="#2DaD6B"
           letter-spacing="normal"
         >
-          <a href="https://spreadshare.co">Change your email preferences</a>
+          <a href={emailPrefLink}>Change your email preferences</a>
         </mj-text>
       </mj-column>
     </mj-section>

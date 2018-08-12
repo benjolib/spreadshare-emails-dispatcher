@@ -41,7 +41,7 @@ functions:
           cors: true
     package: false
   test:
-    handler: src/handlers/test.handler
+    handler: src/handlers/testEmail.handler
     description: Send a test email
     events:
       - http:
