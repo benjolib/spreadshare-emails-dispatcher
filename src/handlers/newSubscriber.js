@@ -9,7 +9,7 @@ import httpJsonErrorHandler from '../middlewares/httpJsonErrorHandler';
 import type { NewSubscriberEmailEvent } from '../types';
 import { errorRes } from '../utils/http';
 
-export const newSubscriber = async (event: NewSubscriberEmailEvent) => {
+const newSubscriber = async (event: NewSubscriberEmailEvent) => {
   const { emails, subscription } = event.body;
   const [err, result] = await to(
     mailer.sendNewSubscriberEmail(emails, subscription)

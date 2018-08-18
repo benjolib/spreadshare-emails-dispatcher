@@ -2,8 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Envelope from '../molecules/Envelope';
 import Header from '../molecules/Header';
-import StreamList from '../atoms/StreamList';
-import style from '../../style';
+import PostList from '../atoms/PostList';
 
 const frequencyPrefixMap = {
   daily: 'Today',
@@ -35,7 +34,7 @@ function Digest(props) {
           {frequencySuffixMap[frequency]}
         </mj-text>
       </mj-section>
-      <StreamList {...props} />
+      <PostList {...props} />
     </Envelope>
   );
 }

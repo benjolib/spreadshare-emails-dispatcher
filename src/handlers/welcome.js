@@ -9,7 +9,7 @@ import httpJsonErrorHandler from '../middlewares/httpJsonErrorHandler';
 import type { WelcomeEmailEvent } from '../types';
 import { errorRes } from '../utils/http';
 
-export const welcomeEmail = async (event: WelcomeEmailEvent) => {
+const welcomeEmail = async (event: WelcomeEmailEvent) => {
   const { email, name } = event.body;
   const [err, result] = await to(mailer.sendWelcomeEmail(email, name));
   if (err) {

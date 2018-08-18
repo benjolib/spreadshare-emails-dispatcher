@@ -94,6 +94,15 @@ functions:
           path: email/new-comment
           cors: true
           private: true
+  newStream:
+    handler: src/handlers/newStream.handler
+    description: Send a New Stream email
+    events:
+    - http:
+        method: post
+        path: email/new-stream
+        cors: true
+        private: true
   digest:
     handler: src/handlers/digest.handler
     description: Send a Subscriptions Digest email

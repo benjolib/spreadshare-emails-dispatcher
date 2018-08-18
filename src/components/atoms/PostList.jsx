@@ -4,7 +4,7 @@ import PostWithUser from './PostWithUser';
 
 const maxNoOfPost = 20;
 
-function StreamList({ name, link, digest }) {
+function PostList({ name, link, digest }) {
   const stream = {
     name,
     link
@@ -40,7 +40,7 @@ function StreamList({ name, link, digest }) {
   );
 }
 
-StreamList.propTypes = {
+PostList.propTypes = {
   name: PropTypes.string.isRequired,
   link: PropTypes.string.isRequired,
   digest: PropTypes.arrayOf(
@@ -62,4 +62,4 @@ StreamList.propTypes = {
   )
 };
 
-export default StreamList;
+export default PostList;

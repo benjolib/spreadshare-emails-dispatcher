@@ -126,6 +126,33 @@ function Envelope({ previewText, children }) {
           />
 
           <mj-class
+            name="stream-name"
+            align="left"
+            font-weight={style.fontWeights.semiBold}
+            font-family={style.fontFamily.default}
+            color={style.colors.darkText}
+            font-size="16px"
+          />
+
+          <mj-class
+            name="stream-tagline"
+            align="left"
+            font-weight={style.fontWeights.light}
+            font-family={style.fontFamily.default}
+            color={style.colors.lightText}
+            font-size="14px"
+          />
+
+          <mj-class
+            name="stream-description"
+            align="left"
+            font-weight={style.fontWeights.default}
+            font-family={style.fontFamily.default}
+            color={style.colors.semidarkText}
+            font-size="12px"
+          />
+
+          <mj-class
             name="avatar"
             align="right"
             padding-right="8px"

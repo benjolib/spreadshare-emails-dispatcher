@@ -33,6 +33,18 @@ export interface SpreadshareMailerI {
   sendDigestEmail(email: string | Array<string>, digest: Digest): Promise<void>;
 
   sendWelcomeEmail(email: string, name: string): Promise<void>;
+
+  sendNewStreamEmail(
+    email: string | Array<string>,
+    data: {
+      creator: Person,
+      stream: Stream & {
+        imageLink: string,
+        tagline: string,
+        description?: string
+      }
+    }
+  ): Promise<void>;
 }
 
 type Frequency = 'daily' | 'weekly' | 'monthly';
@@ -126,6 +138,20 @@ export type NewSubscriberEmailEvent = {
     subscription: {
       subscriber: UserProfile,
       stream: Stream
+    }
+  }
+};
+
+export type NewStreamEmailEvent = {
+  body: {
+    emails: Array<string> | string,
+    data: {
+      creator: Person,
+      stream: Stream & {
+        imageLink: string,
+        tagline: string,
+        description?: string
+      }
     }
   }
 };

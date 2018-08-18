@@ -1,23 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Post from './Post';
 import UserName from './UserName';
+import Stream from './Stream';
 import { defaultUserImageSmall } from '../../utils/common';
 
-function PostWithUser(props) {
-  const { contributor, stream } = props;
-  let { imageLink } = contributor;
-  if (!imageLink) {
-    imageLink = defaultUserImageSmall(contributor.name);
-  }
+function StreamWithUser({ creator, stream }) {
   const userNameProps = {
-    name: contributor.name,
-    middleText: 'added a listing to',
+    name: creator.name,
+    middleText: 'created',
     linkText: stream.name,
     link: stream.link,
     withImage: true,
     anchorStyle: 'simple'
   };
+
+  let { imageLink } = creator;
+  if (!imageLink) {
+    imageLink = defaultUserImageSmall(creator.name);
+  }
 
   return (
     <mj-section padding-top="0px" padding-bottom="24px">
@@ -47,29 +47,24 @@ function PostWithUser(props) {
           </mj-column>
         </mj-group>
       </mj-section>
-      <Post {...props} itemsInFirstRow={1} maxItemInARow={2} />
+      <Stream {...stream} />
     </mj-section>
   );
 }
 
-PostWithUser.propTypes = {
-  votesCount: PropTypes.number.isRequired,
-  imageLink: PropTypes.string,
-  columns: PropTypes.arrayOf(
-    PropTypes.shape({
-      text: PropTypes.string.isRequired,
-      link: PropTypes.string
-    })
-  ).isRequired,
-  stream: PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    link: PropTypes.string.isRequired
-  }).isRequired,
-  contributor: PropTypes.shape({
+StreamWithUser.propTypes = {
+  creator: PropTypes.shape({
     name: PropTypes.string.isRequired,
     fullName: PropTypes.string.isRequired,
     imageLink: PropTypes.string
+  }).isRequired,
+  stream: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    link: PropTypes.string.isRequired,
+    imageLink: PropTypes.string.isRequired,
+    tagline: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired
   }).isRequired
 };
 
-export default PostWithUser;
+export default StreamWithUser;

@@ -1,12 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import UserName from '../atoms/UserName';
+import { defaultUserImageLarge } from '../../utils/common';
 
 function UserBox(props) {
   const { name, detail } = props;
   let { imageLink } = props;
   if (!imageLink) {
-    imageLink = `https://api.adorable.io/avatars/240/${name}`;
+    imageLink = defaultUserImageLarge(name);
   }
   return (
     <mj-group width="80%">

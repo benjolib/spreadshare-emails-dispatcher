@@ -9,6 +9,6 @@ export type EnvelopeFactory = (
 export type Envelope = {
   from: string,
   to: string,
-  bcc: Array<string> | string,
+  bcc?: Array<string>,
   subject: string
 };

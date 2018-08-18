@@ -52,8 +52,7 @@ const data = {
   },
   digest: {
     frequency: 'monthly',
-    name:
-      'Design Tools',
+    name: 'Design Tools',
     link: 'https://google.com',
     digest: [
       {
@@ -157,6 +156,22 @@ const data = {
         ]
       }
     ]
+  },
+  newStream: {
+    stream: {
+      name: 'Slack Communities for Blockchain & Crypto',
+      link: 'https://google.com',
+      imageLink: 'https://spreadshare.co/tableimages/22.png',
+      tagline:
+        'A list of public Slack groups to engage with blockchain and crypto enthusiasts.',
+      description:
+        "By today, we're one of the 0,05% top upvoted products on the platform, won a Golden Kitty award and created this list of best practices for you to prepare right. Please share with your friends and people who plan to launch a product soon."
+    },
+    creator: {
+      name: 'Benjamin',
+      fullName: 'Benjamin Libor',
+      imageLink: 'https://ca.slack-edge.com/T7S34FEUD-U7RUFNSD8-223ce264a05a-72'
+    }
   }
 };
 

@@ -4,7 +4,7 @@ import Envelope from '../molecules/Envelope';
 import Header from '../molecules/Header';
 import UserBox from '../molecules/UserBox';
 
-function NewComment({
+function UserProfileWithStreamComponent({
   title,
   subTitle,
   previewText,
@@ -40,7 +40,7 @@ function NewComment({
   );
 }
 
-NewComment.propTypes = {
+UserProfileWithStreamComponent.propTypes = {
   title: PropTypes.string.isRequired,
   subTitle: PropTypes.string.isRequired,
   previewText: PropTypes.string.isRequired,
@@ -58,4 +58,4 @@ NewComment.propTypes = {
   personDescription: PropTypes.string.isRequired
 };
 
-export default NewComment;
+export default UserProfileWithStreamComponent;

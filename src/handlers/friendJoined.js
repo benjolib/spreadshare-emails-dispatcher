@@ -9,7 +9,7 @@ import httpJsonErrorHandler from '../middlewares/httpJsonErrorHandler';
 import type { UserProfileEmailEvent } from '../types';
 import { errorRes } from '../utils/http';
 
-export const friendJoined = async (event: UserProfileEmailEvent) => {
+const friendJoined = async (event: UserProfileEmailEvent) => {
   const { emails, person } = event.body;
   const [err, result] = await to(mailer.sendFriendJoinedEmail(emails, person));
   if (err) {

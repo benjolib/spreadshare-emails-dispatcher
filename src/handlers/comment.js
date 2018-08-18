@@ -9,7 +9,7 @@ import httpJsonErrorHandler from '../middlewares/httpJsonErrorHandler';
 import type { CommentEmailEvent } from '../types';
 import { errorRes } from '../utils/http';
 
-export const comment = async (event: CommentEmailEvent) => {
+const comment = async (event: CommentEmailEvent) => {
   const { emails, commentInfo } = event.body;
   const [err, result] = await to(mailer.sendCommentEmail(emails, commentInfo));
   if (err) {

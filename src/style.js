@@ -23,6 +23,7 @@ module.exports = {
     footer: '#F8F8FB',
     contentBackground: '#ffffff',
     darkText: '#2a1e3e',
+    semidarkText: '#4a505b',
     lightText: '#9baabf'
   },
 

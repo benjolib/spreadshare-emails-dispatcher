@@ -9,7 +9,7 @@ import httpJsonErrorHandler from '../middlewares/httpJsonErrorHandler';
 import type { UserProfileEmailEvent } from '../types';
 import { errorRes } from '../utils/http';
 
-export const newFollower = async (event: UserProfileEmailEvent) => {
+const newFollower = async (event: UserProfileEmailEvent) => {
   const { emails, person } = event.body;
   const [err, result] = await to(mailer.sendNewFollowerEmail(emails, person));
   if (err) {

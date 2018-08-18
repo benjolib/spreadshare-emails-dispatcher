@@ -8,7 +8,8 @@ import type {
   UserProfile,
   CommentInfo,
   Digest,
-  Stream
+  Stream,
+  Person
 } from '../types';
 
 const welcomeEmailText = (name: string) => `Hi ${name},
@@ -102,10 +103,29 @@ export default class SpreadshareMailer implements SpreadshareMailerI {
   }
 
   async sendWelcomeEmail(email: string, name: string): Promise<void> {
-    const envelope = envelopes.WelcomeEmail(email);
+    const envelope = envelopes.Welcome(email);
     const content = {
       ...envelope,
       text: welcomeEmailText(name)
+    };
+    return this.mailer.sendMail(content);
+  }
+
+  async sendNewStreamEmail(
+    email: string | Array<string>,
+    data: {
+      creator: Person,
+      stream: Stream & {
+        imageLink: string,
+        tagline: string,
+        description?: string
+      }
+    }
+  ): Promise<void> {
+    const envelope = envelopes.NewStream(email, data);
+    const content = {
+      ...envelope,
+      html: await getLetter('newStream', data)
     };
     return this.mailer.sendMail(content);
   }

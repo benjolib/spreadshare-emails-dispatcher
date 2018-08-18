@@ -4,14 +4,14 @@ import to from 'await-to-js';
 import middy from 'middy';
 import { jsonBodyParser, validator } from 'middy/middlewares';
 import { mailer } from './factory';
-import { testEmailSchema } from '../schemas';
+import { newStreamSchema } from '../schemas';
 import httpJsonErrorHandler from '../middlewares/httpJsonErrorHandler';
-import type { TestEmailEvent } from '../types';
+import type { NewStreamEmailEvent } from '../types';
 import { errorRes } from '../utils/http';
 
-const testEmail = async (event: TestEmailEvent) => {
-  const { email, greeting } = event.body;
-  const [err, result] = await to(mailer.sendTestMail(email, greeting || 'Hi'));
+export const newStream = async (event: NewStreamEmailEvent) => {
+  const { emails, data } = event.body;
+  const [err, result] = await to(mailer.sendNewStreamEmail(emails, data));
   if (err) {
     console.log('error: ', err);
     return errorRes(500, err.message);
@@ -25,7 +25,7 @@ const testEmail = async (event: TestEmailEvent) => {
   };
 };
 
-export const handler = middy(testEmail)
+export const handler = middy(newStream)
   .use(jsonBodyParser())
-  .use(validator({ inputSchema: testEmailSchema }))
+  .use(validator({ inputSchema: newStreamSchema }))
   .use(httpJsonErrorHandler());

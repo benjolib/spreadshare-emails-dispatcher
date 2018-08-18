@@ -331,3 +331,78 @@ export const digestSchema = {
     }
   }
 };
+
+export const newStreamSchema = {
+  type: 'object',
+  required: ['body'],
+  properties: {
+    body: {
+      type: 'object',
+      required: ['emails', 'data'],
+      properties: {
+        emails: {
+          anyOf: [
+            {
+              type: 'array',
+              items: {
+                type: 'string',
+                format: 'email'
+              },
+              uniqueItems: true,
+              minItems: 1
+            },
+            {
+              type: 'string',
+              format: 'email'
+            }
+          ]
+        },
+        data: {
+          type: 'object',
+          required: ['creator', 'stream'],
+          properties: {
+            subscriber: {
+              type: 'object',
+              required: ['name', 'fullName'],
+              properties: {
+                name: {
+                  type: 'string'
+                },
+                fullName: {
+                  type: 'string'
+                },
+                imageLink: {
+                  type: 'string',
+                  format: 'url'
+                }
+              }
+            },
+            stream: {
+              type: 'object',
+              required: ['name', 'link', 'tagline', 'imageLink'],
+              properties: {
+                name: {
+                  type: 'string'
+                },
+                link: {
+                  type: 'string',
+                  format: 'url'
+                },
+                tagline: {
+                  type: 'string'
+                },
+                imageLink: {
+                  type: 'string',
+                  format: 'url'
+                },
+                description: {
+                  type: 'string'
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+};
