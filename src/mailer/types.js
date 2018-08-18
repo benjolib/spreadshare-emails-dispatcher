@@ -8,6 +8,7 @@ export type EnvelopeFactory = (
 
 export type Envelope = {
   from: string,
-  to: Array<string> | string,
+  to: string,
+  bcc: Array<string> | string,
   subject: string
 };
